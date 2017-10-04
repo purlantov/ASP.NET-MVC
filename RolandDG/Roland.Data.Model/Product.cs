@@ -5,10 +5,10 @@ using System.Web;
 
 namespace Roland_ASP_MVC.Models
 {
-    public class ProductModels
+    public class Product
     {
-        private string productName;
-        private string category;
+        private string productName { get; set; }
+        private string category { get; set; }
 
     }
 }
