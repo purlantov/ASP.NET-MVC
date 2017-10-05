@@ -14,6 +14,8 @@ namespace Roland_ASP_MVC.App_Start
     using System.Data.Entity;
     using Roland.Data;
     using Ninject.Extensions.Conventions;
+    using Roland.Data.UnitOfWork;
+    using AutoMapper;
 
     public static class NinjectWebCommon
     {
@@ -74,6 +76,8 @@ namespace Roland_ASP_MVC.App_Start
 
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+            kernel.Bind<IMapper>().ToMethod(x => Mapper.Instance).InSingletonScope();
         }
     }
 }

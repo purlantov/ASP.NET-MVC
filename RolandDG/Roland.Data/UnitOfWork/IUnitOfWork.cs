@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Roland.Data.UnitOfWork
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         void Commit();
     }

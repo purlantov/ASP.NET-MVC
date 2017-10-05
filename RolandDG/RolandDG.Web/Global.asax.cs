@@ -1,9 +1,11 @@
 ﻿using Roland.Data;
 using Roland.Data.Migrations;
+using Roland_ASP_MVC.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -21,6 +23,9 @@ namespace Roland_ASP_MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var mapper = new AutoMapperConfig();
+            mapper.Execute(Assembly.GetExecutingAssembly());
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Roland.Data.Migrations
 
     public sealed class Configuration : DbMigrationsConfiguration<MsSqlDbContext>
     {
-        private const string AdministratorUserName = "admin@roland.com";
+        private const string AdministratorUserName = "info@roland.com";
         private const string AdministratorPassword = "123456";
 
         public Configuration()

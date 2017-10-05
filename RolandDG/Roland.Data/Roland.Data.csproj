@@ -97,6 +97,10 @@
     <Compile Include="Migrations\201710041633265_add products to user.Designer.cs">
       <DependentUpon>201710041633265_add products to user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710050700512_MsSqlContext ApplyAuditInfoRoles.cs" />
+    <Compile Include="Migrations\201710050700512_MsSqlContext ApplyAuditInfoRoles.Designer.cs">
+      <DependentUpon>201710050700512_MsSqlContext ApplyAuditInfoRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710041633265_add products to user.resx">
       <DependentUpon>201710041633265_add products to user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710050700512_MsSqlContext ApplyAuditInfoRoles.resx">
+      <DependentUpon>201710050700512_MsSqlContext ApplyAuditInfoRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
