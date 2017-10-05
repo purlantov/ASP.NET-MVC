@@ -1,15 +1,12 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Roland_ASP_MVC.Models;
 using Roland.Data.Model;
+using Roland_ASP_MVC.ViewModels.Account;
 
 namespace Roland_ASP_MVC.Controllers
 {

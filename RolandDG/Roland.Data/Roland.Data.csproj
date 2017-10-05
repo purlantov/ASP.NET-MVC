@@ -85,21 +85,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201710040003125_Connection strings.cs" />
-    <Compile Include="Migrations\201710040003125_Connection strings.Designer.cs">
-      <DependentUpon>201710040003125_Connection strings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710040036082_Product.cs" />
-    <Compile Include="Migrations\201710040036082_Product.Designer.cs">
-      <DependentUpon>201710040036082_Product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710041633265_add products to user.cs" />
-    <Compile Include="Migrations\201710041633265_add products to user.Designer.cs">
-      <DependentUpon>201710041633265_add products to user.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710050700512_MsSqlContext ApplyAuditInfoRoles.cs" />
-    <Compile Include="Migrations\201710050700512_MsSqlContext ApplyAuditInfoRoles.Designer.cs">
-      <DependentUpon>201710050700512_MsSqlContext ApplyAuditInfoRoles.cs</DependentUpon>
+    <Compile Include="Migrations\201710052237221_Initial.cs" />
+    <Compile Include="Migrations\201710052237221_Initial.Designer.cs">
+      <DependentUpon>201710052237221_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
@@ -120,17 +108,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710040003125_Connection strings.resx">
-      <DependentUpon>201710040003125_Connection strings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710040036082_Product.resx">
-      <DependentUpon>201710040036082_Product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041633265_add products to user.resx">
-      <DependentUpon>201710041633265_add products to user.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710050700512_MsSqlContext ApplyAuditInfoRoles.resx">
-      <DependentUpon>201710050700512_MsSqlContext ApplyAuditInfoRoles.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710052237221_Initial.resx">
+      <DependentUpon>201710052237221_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

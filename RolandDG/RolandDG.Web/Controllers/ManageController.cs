@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Roland_ASP_MVC.Models;
+using Roland_ASP_MVC.ViewModels;
+using Roland_ASP_MVC.ViewModels.Manage;
 
 namespace Roland_ASP_MVC.Controllers
 {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Roland_ASP_MVC.Models
+namespace Roland_ASP_MVC.ViewModels
 {
     public class Product : DataModel
     {

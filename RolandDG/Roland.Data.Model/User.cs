@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using System.Security.Claims;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Roland_ASP_MVC.Models;
+using Roland_ASP_MVC.ViewModels;
 
 namespace Roland.Data.Model
 {

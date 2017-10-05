@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Roland_ASP_MVC.Models;
+using Roland_ASP_MVC.ViewModels;
 using Roland.Data;
 using Roland.Data.Model;
 

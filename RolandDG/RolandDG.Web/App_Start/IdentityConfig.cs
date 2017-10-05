@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Roland_ASP_MVC.Models;
+using Roland_ASP_MVC.ViewModels;
 using Roland.Data.Model;
 using Roland.Data;
 
