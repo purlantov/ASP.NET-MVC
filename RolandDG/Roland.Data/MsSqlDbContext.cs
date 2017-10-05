@@ -2,6 +2,7 @@
 using Roland.Data.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Roland.Data
             : base("LocalConnection", throwIfV1Schema: false)
         {
         }
+
+        public IDbSet<Post> Posts { get; set; }
 
         public static MsSqlDbContext Create()
         {

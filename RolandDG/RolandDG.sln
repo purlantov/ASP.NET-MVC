@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RolandDG", "RolandDG\RolandDG.csproj", "{CFC6A0A0-1550-426C-8CA9-FFE76C6664CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RolandDG.Web", "RolandDG.Web\RolandDG.Web.csproj", "{CFC6A0A0-1550-426C-8CA9-FFE76C6664CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RolandDG.Tests", "RolandDG.Tests\RolandDG.Tests.csproj", "{C0659087-6C2A-4609-999F-C5C96B981050}"
 EndProject

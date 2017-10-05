@@ -89,9 +89,21 @@
     <Compile Include="Migrations\201710040003125_Connection strings.Designer.cs">
       <DependentUpon>201710040003125_Connection strings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710040036082_Product.cs" />
+    <Compile Include="Migrations\201710040036082_Product.Designer.cs">
+      <DependentUpon>201710040036082_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710041633265_add products to user.cs" />
+    <Compile Include="Migrations\201710041633265_add products to user.Designer.cs">
+      <DependentUpon>201710041633265_add products to user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EfRepository.cs" />
+    <Compile Include="Repositories\IEfRepository.cs" />
+    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -106,6 +118,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710040003125_Connection strings.resx">
       <DependentUpon>201710040003125_Connection strings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710040036082_Product.resx">
+      <DependentUpon>201710040036082_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041633265_add products to user.resx">
+      <DependentUpon>201710041633265_add products to user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,12 +9,14 @@ using Microsoft.AspNet.Identity;
 using System.Security.Claims;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Roland_ASP_MVC.Models;
 
 namespace Roland.Data.Model
 {
     public class User : IdentityUser, IAuditable, IDeletable
     {
         private ICollection<Post> posts;
+        private ICollection<Product> products;
 
         public User()
         {
@@ -42,6 +44,18 @@ namespace Roland.Data.Model
             set
             {
                 this.posts = value;
+            }
+        }
+
+        public virtual ICollection<Product> Products
+        {
+            get
+            {
+                return this.products;
+            }
+            set
+            {
+                this.products = value;
             }
         }
 
