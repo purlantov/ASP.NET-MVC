@@ -89,6 +89,14 @@
     <Compile Include="Migrations\201710052237221_Initial.Designer.cs">
       <DependentUpon>201710052237221_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710061048316_add printer.cs" />
+    <Compile Include="Migrations\201710061048316_add printer.Designer.cs">
+      <DependentUpon>201710061048316_add printer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710061105233_Printer.cs" />
+    <Compile Include="Migrations\201710061105233_Printer.Designer.cs">
+      <DependentUpon>201710061105233_Printer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,6 +118,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710052237221_Initial.resx">
       <DependentUpon>201710052237221_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710061048316_add printer.resx">
+      <DependentUpon>201710061048316_add printer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710061105233_Printer.resx">
+      <DependentUpon>201710061105233_Printer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

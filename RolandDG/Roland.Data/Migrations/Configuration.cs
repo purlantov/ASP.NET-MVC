@@ -70,6 +70,20 @@ namespace Roland.Data.Migrations
                     context.Posts.Add(post);
                 }
             }
+            if (!context.Printers.Any())
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    var printer = new Roland.Data.Model.Printer()
+                    {
+                        Model = "MDX-4" + i,
+                        ProductType =  ProductType.Printer + i
+                       
+                    };
+
+                    context.Printers.Add(printer);
+                }
+            }
         }
     }
 }

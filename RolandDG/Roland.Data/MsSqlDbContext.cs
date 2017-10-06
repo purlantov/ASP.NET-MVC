@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Roland.Data.Model;
 using Roland.Data.Model.Contracts;
-using Roland_ASP_MVC.ViewModels;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -17,6 +16,7 @@ namespace Roland.Data
 
         public IDbSet<Post> Posts { get; set; }
         public IDbSet<Product> Products { get; set; }
+        public IDbSet<Printer> Printers { get; set; }
 
         public override int SaveChanges()
         {
