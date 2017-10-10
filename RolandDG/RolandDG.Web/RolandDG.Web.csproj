@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Roland_ASP_MVC</RootNamespace>
-    <AssemblyName>Roland_ASP_MVC</AssemblyName>
+    <RootNamespace>RolandDG.Web</RootNamespace>
+    <AssemblyName>RolandDG.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -253,6 +253,7 @@
     <Compile Include="ViewModels\Manage\IndexViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Product\IProductViewModel.cs" />
+    <Compile Include="ViewModels\Product\ProductViewModel.cs" />
     <Compile Include="ViewModels\Product\PrinterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +321,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <None Include="Views\Printer\Index.cshtml" />
+    <Content Include="Views\Printer\Printer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +350,10 @@
     <ProjectReference Include="..\Roland.Data\Roland.Data.csproj">
       <Project>{6022C196-1FE7-4707-8096-3D54F1AA755C}</Project>
       <Name>Roland.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Roland.Services\RolandDG.Services.csproj">
+      <Project>{7b36af1e-f218-4e56-a5a7-b9982e8a0cd4}</Project>
+      <Name>RolandDG.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

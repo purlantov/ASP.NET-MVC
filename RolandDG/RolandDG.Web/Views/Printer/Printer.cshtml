@@ -1,0 +1,10 @@
+﻿@model ICollection<Roland_ASP_MVC.ViewModels.Product.PrinterViewModel>
+
+<h2>Printer printer</h2>
+<div>
+    Models:
+    @foreach (var printer in Model)
+    {
+        <p>@printer.Model</p>
+    }
+</div>

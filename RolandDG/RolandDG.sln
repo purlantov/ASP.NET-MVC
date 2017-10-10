@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RolandDG.Web", "RolandDG.Web\RolandDG.Web.csproj", "{CFC6A0A0-1550-426C-8CA9-FFE76C6664CF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7B36AF1E-F218-4E56-A5A7-B9982E8A0CD4} = {7B36AF1E-F218-4E56-A5A7-B9982E8A0CD4}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RolandDG.Tests", "RolandDG.Tests\RolandDG.Tests.csproj", "{C0659087-6C2A-4609-999F-C5C96B981050}"
 EndProject
@@ -12,6 +15,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roland.Data", "Roland.Data\Roland.Data.csproj", "{6022C196-1FE7-4707-8096-3D54F1AA755C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roland.Data.Model", "Roland.Data.Model\Roland.Data.Model.csproj", "{8B29B040-A9E6-459D-BC83-017D2C9CA9C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RolandDG.Services", "Roland.Services\RolandDG.Services.csproj", "{7B36AF1E-F218-4E56-A5A7-B9982E8A0CD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +40,10 @@ Global
 		{8B29B040-A9E6-459D-BC83-017D2C9CA9C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B29B040-A9E6-459D-BC83-017D2C9CA9C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B29B040-A9E6-459D-BC83-017D2C9CA9C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B36AF1E-F218-4E56-A5A7-B9982E8A0CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B36AF1E-F218-4E56-A5A7-B9982E8A0CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B36AF1E-F218-4E56-A5A7-B9982E8A0CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B36AF1E-F218-4E56-A5A7-B9982E8A0CD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,3 +1,5 @@
+using RolandDG.Services.Contracts;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Roland_ASP_MVC.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Roland_ASP_MVC.App_Start.NinjectWebCommon), "Stop")]
 
@@ -72,6 +74,12 @@ namespace Roland_ASP_MVC.App_Start
                 x.FromThisAssembly()
                 .SelectAllClasses()
                 .BindDefaultInterface();
+            });
+            kernel.Bind(x =>
+            {
+                x.FromAssemblyContaining(typeof(IService))
+                 .SelectAllClasses()
+                 .BindDefaultInterface();
             });
 
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
