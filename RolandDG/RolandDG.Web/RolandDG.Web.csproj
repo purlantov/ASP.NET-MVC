@@ -323,6 +323,8 @@
     <Content Include="Views\Product\Index.cshtml" />
     <None Include="Views\Printer\Index.cshtml" />
     <Content Include="Views\Printer\Printer.cshtml" />
+    <Content Include="Views\Product\Printer.cshtml" />
+    <Content Include="Views\Product\Printers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
