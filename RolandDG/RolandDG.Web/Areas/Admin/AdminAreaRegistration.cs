@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Roland_ASP_MVC.Areas.Admin
+namespace RolandDG.Web.Areas.Admin
 {
     public class AdminAreaRegistration : AreaRegistration
     {
@@ -17,7 +17,9 @@ namespace Roland_ASP_MVC.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new { controller = "Admin" },
+                new[] { "RolandDG.Web.Areas.Admin.Controllers" }
             );
         }
     }

@@ -6,9 +6,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Roland.Data.Model;
-using Roland_ASP_MVC.ViewModels.Account;
+using RolandDG.Web.ViewModels.Account;
 
-namespace Roland_ASP_MVC.Controllers
+namespace RolandDG.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller

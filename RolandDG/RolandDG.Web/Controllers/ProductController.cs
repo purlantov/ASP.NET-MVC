@@ -3,10 +3,12 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNet.Identity;
+using Roland.Data.Model;
 using RolandDG.Services.Contracts;
-using Roland_ASP_MVC.ViewModels.Product;
+using RolandDG.Web.ViewModels.Product;
 
-namespace Roland_ASP_MVC.Controllers
+namespace RolandDG.Web.Controllers
 {
     public class ProductController : Controller
     {
@@ -47,6 +49,33 @@ namespace Roland_ASP_MVC.Controllers
 
             return View(printers);
         }
+
+        [HttpGet]
+        [Authorize(Roles = "User, Admin")]
+        [Route("add-printer")]
+        public ActionResult AddPrinter()
+        {
+            ViewData["Title"] = "Create Printer";
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "User, Admin")]
+        [ValidateAntiForgeryToken]
+        [Route("add-printer")]
+        public ActionResult AddPrinter(Printer printer)
+        {
+            var userId = User.Identity.GetUserId();
+            //var currentUser = this.usersService.GetAll()
+            //    .Single(x => x.Id == userId);
+
+            printer.CreatedOn = DateTime.Now;
+            //printer.Seller = currentUser;
+            this.printersService.Add(printer);
+
+            return RedirectToAction("Printers", "Product");
+        }
+
 
         // GET: Product
         public ActionResult Index()

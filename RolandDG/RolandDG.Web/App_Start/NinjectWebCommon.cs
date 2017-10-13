@@ -1,9 +1,9 @@
 using RolandDG.Services.Contracts;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Roland_ASP_MVC.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Roland_ASP_MVC.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(RolandDG.Web.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(RolandDG.Web.App_Start.NinjectWebCommon), "Stop")]
 
-namespace Roland_ASP_MVC.App_Start
+namespace RolandDG.Web.App_Start
 {
     using System;
     using System.Web;

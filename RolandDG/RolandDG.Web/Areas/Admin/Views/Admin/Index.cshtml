@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model RolandDG.Web.ViewModels.Product.PrinterViewModel
+
+<div id="content">
+    @using (Ajax.BeginForm("AddPrinter", "Product", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content" }))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Model)
+            @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Model)
+        </div>
+    }
+</div>

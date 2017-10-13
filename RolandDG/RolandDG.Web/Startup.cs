@@ -1,8 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using RolandDG.Web;
 
-[assembly: OwinStartup(typeof(Roland_ASP_MVC.Startup))]
-namespace Roland_ASP_MVC
+[assembly: OwinStartup(typeof(Startup))]
+namespace RolandDG.Web
 {
     public partial class Startup
     {

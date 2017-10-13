@@ -1,12 +1,9 @@
-﻿using AutoMapper.QueryableExtensions;
-using Roland_ASP_MVC.App_Start;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
+using AutoMapper.QueryableExtensions;
 
-namespace Roland_ASP_MVC.Infrastructure
+namespace RolandDG.Web.Infrastructure
 {
     public static class QueryableExtensions
     {

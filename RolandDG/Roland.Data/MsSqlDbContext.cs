@@ -17,11 +17,25 @@ namespace Roland.Data
         public IDbSet<Post> Posts { get; set; }
         public IDbSet<Product> Products { get; set; }
         public IDbSet<Printer> Printers { get; set; }
+        public IDbSet<Engraver> Engravers { get; set; }
+        public IDbSet<VinylCutter> VinylCutters { get; set; }
+        public IDbSet<ImpactPrinter> ImpactPrinters { get; set; }
 
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
             return base.SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
         }
 
         private void ApplyAuditInfoRules()

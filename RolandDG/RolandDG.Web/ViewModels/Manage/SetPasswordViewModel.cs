@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Roland_ASP_MVC.ViewModels.Manage
+namespace RolandDG.Web.ViewModels.Manage
 {
     public class SetPasswordViewModel
     {

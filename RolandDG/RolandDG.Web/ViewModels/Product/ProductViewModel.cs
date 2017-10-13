@@ -1,6 +1,6 @@
-﻿using Roland_ASP_MVC.Infrastructure;
+﻿using RolandDG.Web.Infrastructure;
 
-namespace Roland_ASP_MVC.ViewModels.Product
+namespace RolandDG.Web.ViewModels.Product
 {
     public class ProductViewModel : IMapFrom<Roland.Data.Model.Product>
     {

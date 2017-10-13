@@ -13,5 +13,20 @@ namespace Roland.Data.Model
 
         [Required]
         public ProductType ProductType { get; set; }
+
+        [Required]
+        [Range(1,6)]
+        public int PrintHeads { get; set; }
+
+        [Required]
+        [Range(500,1800)]
+        public int MediaWidth { get; set; }
+
+        [Required]
+        public InkType Ink { get; set; }
+
+        [Required]
+        [Range(1, 150)]
+        public int MaxSpeed { get; set; }
     }
 }

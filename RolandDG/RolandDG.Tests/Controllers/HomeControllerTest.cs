@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Roland_ASP_MVC;
-using Roland_ASP_MVC.Controllers;
+using RolandDG.Web.Controllers;
 
-namespace Roland_ASP_MVC.Tests.Controllers
+namespace RolandDG.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace Roland_ASP_MVC
+namespace RolandDG.Web
 {
     public class BundleConfig
     {
@@ -25,7 +24,11 @@ namespace Roland_ASP_MVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/navbar-fixet-side.css",
                       "~/Content/site.css"));
+
+            //bundles.Add(new StyleBundle("~/Content/navbar-fixet-side").Include(
+            //    "~/Content/navbar-fixet-side.css"));
         }
     }
 }

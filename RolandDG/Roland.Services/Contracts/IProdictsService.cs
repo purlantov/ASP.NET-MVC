@@ -10,7 +10,7 @@ namespace RolandDG.Services.Contracts
     public interface IProdictsService
     {
         IQueryable<Product> GetAll();
-        void Add(Product laptop);
+        void Add(Product product);
         void Delete(Product laptop);
         void Update(Product laptop);
     }

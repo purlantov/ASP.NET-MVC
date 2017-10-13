@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Roland_ASP_MVC.ViewModels.Account
+namespace RolandDG.Web.ViewModels.Account
 {
     public class ForgotViewModel
     {

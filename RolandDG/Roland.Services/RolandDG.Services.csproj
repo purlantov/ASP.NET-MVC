@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IPrintersService.cs" />
     <Compile Include="Contracts\IService.cs" />
+    <Compile Include="EngraversService.cs" />
     <Compile Include="ProductsService.cs" />
     <Compile Include="PrintersService.cs" />
     <Compile Include="Contracts\IProdictsService.cs" />
