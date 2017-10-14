@@ -10,8 +10,8 @@ namespace RolandDG.Services.Contracts
     public interface IPrintersService
     {
         IQueryable<Printer> GetAll();
-        void Add(Printer laptop);
-        void Delete(Printer laptop);
-        void Update(Printer laptop);
+        void Add(Printer printer);
+        void Delete(Printer printer);
+        void Update(Printer printer);
     }
 }

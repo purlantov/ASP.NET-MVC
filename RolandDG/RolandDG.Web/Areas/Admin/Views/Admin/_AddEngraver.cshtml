@@ -1,0 +1,50 @@
+﻿@using Roland.Data.Model
+@model RolandDG.Web.ViewModels.Product.EngraverViewModel
+
+@*@using (Html.BeginForm("AddPrinter", "Product"))*@
+@using (Ajax.BeginForm("AddEngraver", "Admin",
+                                        new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content", InsertionMode = InsertionMode.Replace, OnComplete = "ParsUnob" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Model)
+        @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Model)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MaxSpeed)
+        @Html.TextBoxFor(m => m.MaxSpeed, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MaxSpeed)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.RPM)
+        @Html.TextBoxFor(m => m.RPM, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.RPM)
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.TableWidth)
+            @Html.TextBoxFor(m => m.TableWidth, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.TableWidth)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.TableDepth)
+            @Html.TextBoxFor(m => m.TableDepth, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.TableDepth)
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Save</button>
+
+            }
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function ParsUnob() {
+            $.validator.unobtrusive.parse("content");
+        }
+    </script>
+}
+

@@ -89,25 +89,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201710052237221_Initial.cs" />
-    <Compile Include="Migrations\201710052237221_Initial.Designer.cs">
-      <DependentUpon>201710052237221_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201710140618300_initial.cs" />
+    <Compile Include="Migrations\201710140618300_initial.Designer.cs">
+      <DependentUpon>201710140618300_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710061048316_add printer.cs" />
-    <Compile Include="Migrations\201710061048316_add printer.Designer.cs">
-      <DependentUpon>201710061048316_add printer.cs</DependentUpon>
+    <Compile Include="Migrations\201710140620531_addUserToSeedMethod.cs" />
+    <Compile Include="Migrations\201710140620531_addUserToSeedMethod.Designer.cs">
+      <DependentUpon>201710140620531_addUserToSeedMethod.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710061105233_Printer.cs" />
-    <Compile Include="Migrations\201710061105233_Printer.Designer.cs">
-      <DependentUpon>201710061105233_Printer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710102217288_Users without AspNet.cs" />
-    <Compile Include="Migrations\201710102217288_Users without AspNet.Designer.cs">
-      <DependentUpon>201710102217288_Users without AspNet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710110114144_ImpactPrinter, Engraver, VinylCutter.cs" />
-    <Compile Include="Migrations\201710110114144_ImpactPrinter, Engraver, VinylCutter.Designer.cs">
-      <DependentUpon>201710110114144_ImpactPrinter, Engraver, VinylCutter.cs</DependentUpon>
+    <Compile Include="Migrations\201710140624076_addPrintersToSeedMethod.cs" />
+    <Compile Include="Migrations\201710140624076_addPrintersToSeedMethod.Designer.cs">
+      <DependentUpon>201710140624076_addPrintersToSeedMethod.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
@@ -128,20 +120,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710052237221_Initial.resx">
-      <DependentUpon>201710052237221_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710140618300_initial.resx">
+      <DependentUpon>201710140618300_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710061048316_add printer.resx">
-      <DependentUpon>201710061048316_add printer.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710140620531_addUserToSeedMethod.resx">
+      <DependentUpon>201710140620531_addUserToSeedMethod.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710061105233_Printer.resx">
-      <DependentUpon>201710061105233_Printer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710102217288_Users without AspNet.resx">
-      <DependentUpon>201710102217288_Users without AspNet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710110114144_ImpactPrinter, Engraver, VinylCutter.resx">
-      <DependentUpon>201710110114144_ImpactPrinter, Engraver, VinylCutter.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710140624076_addPrintersToSeedMethod.resx">
+      <DependentUpon>201710140624076_addPrintersToSeedMethod.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

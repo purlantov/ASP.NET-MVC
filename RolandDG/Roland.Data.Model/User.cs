@@ -12,12 +12,11 @@ namespace Roland.Data.Model
 {
     public class User : IdentityUser, IAuditable, IDeletable
     {
-        private ICollection<Post> posts;
-        private ICollection<Product> products;
+        public virtual ICollection<Product> Products { get; set; }
 
         public User()
         {
-            this.posts = new HashSet<Post>();
+            this.Products = new HashSet<Product>();
         }
 
         [Index]
@@ -32,29 +31,7 @@ namespace Roland.Data.Model
         [DataType(DataType.DateTime)]
         public DateTime? ModifiedOn { get; set; }
 
-        public virtual ICollection<Post> Posts
-        {
-            get
-            {
-                return this.posts;
-            }
-            set
-            {
-                this.posts = value;
-            }
-        }
-
-        public virtual ICollection<Product> Products
-        {
-            get
-            {
-                return this.products;
-            }
-            set
-            {
-                this.products = value;
-            }
-        }
+        public UserType UserType { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

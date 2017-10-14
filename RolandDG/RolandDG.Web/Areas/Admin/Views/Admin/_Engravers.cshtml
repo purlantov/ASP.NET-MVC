@@ -1,0 +1,84 @@
+﻿@model RolandDG.Web.ViewModels.Product.ProductViewModel
+
+<h3 class="centerText">
+    <span>All printers</span>
+    <button id="refreshButton" class='btn btn-default pull-right'>Refresh</button>
+</h3>
+
+<hr />
+
+<div class="table-responsive">
+    <table id="computersTable" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Model</th>
+                <th>Spidle RPM</th>
+                <th>Table Width</th>
+                <th>Table Depth</th>
+                <th>See printer</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var engraver in Model.EngraversCollection)
+            {
+                string deviceType = engraver.GetType().Name
+                    .Split(new string[] { "ViewModel" },
+                    StringSplitOptions.RemoveEmptyEntries)[0];
+
+                <tr>
+                    <td>@deviceType</td>
+                    <td>@engraver.Model</td>
+                    <td>@Html.DisplayFor(x => engraver.RPM)</td>
+                    <td>@Html.DisplayFor(x => engraver.TableWidth) mm</td>
+                    <td>@engraver.TableDepth mm</td>
+
+                    @{
+                        string adLink = string.Format("/product/{0}/{1}", deviceType, engraver.Id);
+                        string editLink = string.Format("/product/update{0}/{1}", deviceType, engraver.Id);
+                    }
+
+                    <td>
+                        <a class="btn btn-default" target="_blank" href="@adLink">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </a>
+                    </td>
+
+                    <td>
+                        <a class="btn btn-primary" target="_blank" href="@editLink">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </td>
+
+
+                    <td>
+                        @Ajax.ActionLink("X", "Index", "Admin",
+                                                new { type = deviceType, id = engraver.Id },
+                                                new AjaxOptions { HttpMethod = "POST" },
+                                                new { @class = "btn btn-danger" })
+                </tr>
+                        }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#content').DataTable();
+    });
+
+    $(".btn-danger").on('click', (event) => {
+        let el = $(event.target);
+        el.parent().parent().remove();
+    });
+
+    $('#refreshButton').on('click', () => {
+        let url = '/admin/admin/printers';
+        content.load(url);
+    })
+</script>
+
+

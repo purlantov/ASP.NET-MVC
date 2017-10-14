@@ -10,23 +10,17 @@
 
 <body>
     @Html.Partial("_NavbarTop")
-    @*@if (User.IsInRole("Admin"))
-    {
-        @RenderBody()
-    }
-    else
-    {*@
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <a href="https://github.com/purlantov/ASP.NET-MVC" target="_blank">
-                    <p>ASP.NET Project</p>
-                </a>
-            </footer>
-        </div>
-
-    @*  *@}     
+   
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <a href="https://github.com/purlantov/ASP.NET-MVC" target="_blank">
+            <p>ASP.NET Project</p>
+        </a>
+    </footer>
+</div>
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

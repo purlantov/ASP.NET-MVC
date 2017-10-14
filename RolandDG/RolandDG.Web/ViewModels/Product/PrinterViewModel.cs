@@ -15,7 +15,7 @@ namespace RolandDG.Web.ViewModels.Product
         public string Model { get; set; }
 
         [Required]
-        public ProductType ProductType { get; set; }
+        public ProductType ProductType = ProductType.Printer;
 
         [Required]
         [Range(1, 6)]

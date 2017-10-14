@@ -11,7 +11,7 @@ namespace RolandDG.Services.Contracts
     {
         IQueryable<Product> GetAll();
         void Add(Product product);
-        void Delete(Product laptop);
-        void Update(Product laptop);
+        void Delete(Product product);
+        void Update(Product product);
     }
 }

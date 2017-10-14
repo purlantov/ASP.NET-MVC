@@ -1,28 +1,13 @@
-﻿using RolandDG.Web.Infrastructure;
+﻿using System.Collections.Generic;
+using RolandDG.Web.Infrastructure;
 
 namespace RolandDG.Web.ViewModels.Product
 {
-    public class ProductViewModel : IMapFrom<Roland.Data.Model.Product>
+    public class ProductViewModel
     {
-        public string Category { get; set; }
-
-        public decimal Price { get; set; }
-
-        //[Index]
-        //public Guid Id { get; set; }
-
-        //[Required]
-        //[MinLength(4)]
-        //[MaxLength(30)]
-        //public string Model { get; set; }
-
-        //[Required]
-        //public ProductType ProductType { get; set; }
-
-        //public void CreateMappings(IMapperConfigurationExpression configuration)
-        //{
-        //    configuration.CreateMap<Printer, PrinterViewModel>().
-        //        ForMember(viewModel => viewModel.Model, cfg => cfg.MapFrom(model => model.Model));
-        //}
+        public ICollection<PrinterViewModel> PrintersCollection { get; set; }
+        public ICollection<ImpactPrinterViewModel> ImpactPrintersCollection { get; set; }
+        public ICollection<EngraverViewModel> EngraversCollection { get; set; }
+        public ICollection<VinylCutterViewModel> VinylCuttersCollection { get; set; }
     }
 }
