@@ -1,0 +1,73 @@
+﻿@using Roland.Data.Model
+@model RolandDG.Web.ViewModels.Product.PrinterViewModel
+
+@*@using (Html.BeginForm("AddPrinter", "Product"))*@
+@using (Ajax.BeginForm("AddPrinter", "Admin",
+                            new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content", InsertionMode = InsertionMode.Replace, OnComplete = "ParsUnob" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Model)
+        @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Model)
+    </div>
+    <div class="form-group">
+        @{
+            var productType = new List<string>()
+            {
+                "Printer",
+                "VinylCutter",
+                "Engravers",
+                "Milling",
+                "ImpactPrinter"
+            };
+        }
+        @Html.LabelFor(m => m.ProductType)
+        @Html.DropDownListFor(m => m.ProductType, new SelectList(productType), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductType)
+    </div>
+    <div class="form-group">
+        @{
+            var inkType = new List<string>()
+                 {
+                     "EcoSolvent",
+                     "Pigment",
+                     "UV",
+                     "Sublimation"
+                 };
+        }
+        @Html.LabelFor(m => m.Ink)
+        @Html.DropDownListFor(m => m.ProductType, new SelectList(inkType), " ", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Ink)
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MediaWidth)
+            @Html.TextBoxFor(m => m.MediaWidth, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MediaWidth)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.PrintHeads)
+            @Html.TextBoxFor(m => m.PrintHeads, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PrintHeads)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MaxSpeed)
+            @Html.TextBoxFor(m => m.MaxSpeed, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MaxSpeed)
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Save</button>
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function ParsUnob() {
+            $.validator.unobtrusive.parse("content");
+        }
+    </script>
+}
+

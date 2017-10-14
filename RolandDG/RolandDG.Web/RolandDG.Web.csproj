@@ -276,6 +276,8 @@
     <Content Include="Areas\Admin\Views\Shared\_NavbarTop.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Login.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_NavbarSide.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_AddPrinter.cshtml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\roland.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

@@ -1,6 +1,7 @@
 ﻿@model RolandDG.Web.ViewModels.Product.PrinterViewModel
 
-@using (Html.BeginForm("AddPrinter", "Product"))
+@*@using (Html.BeginForm("AddPrinter", "Product"))*@      
+@using (Ajax.BeginForm("AddPrinter", "Product", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-group">

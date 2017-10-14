@@ -23,8 +23,8 @@
                     <li class="dropdown">
                         @*<a class="dropdown-toggle" data-toggle="dropdown" href="#">Printers <b class="caret"></b></a>*@
                         <ul class="dropdown-menu">
-                            <li class="dropdown-header">Engravers</li>
-                            <li><a href="~/Product/AddPrinter">Add printer</a></li>
+                            <li class="dropdown-header">Printers</li>
+                            <li>@Ajax.ActionLink("Add product", "AddPrinter", "Admin", new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "content" })</li>
                             <li><a href="#">Edit printers</a></li>
                         </ul>
                     </li>
