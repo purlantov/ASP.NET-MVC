@@ -1,17 +1,12 @@
-﻿using Roland.Data;
-using Roland.Data.Migrations;
-using Roland_ASP_MVC.App_Start;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Roland.Data;
+using Roland.Data.Migrations;
 
-namespace Roland_ASP_MVC
+namespace RolandDG.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {

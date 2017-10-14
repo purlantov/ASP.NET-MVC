@@ -1,12 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using RolandDG.Services.Contracts;
-using Roland_ASP_MVC.ViewModels.Product;
+﻿using System.Web.Mvc;
 
-namespace Roland_ASP_MVC.Controllers
+namespace RolandDG.Web.Controllers
 {
     public class PrinterController : Controller
     {

@@ -32,7 +32,6 @@ namespace Roland.Data.Migrations
             if (!context.Roles.Any())
             {
                 var roleName = "Admin";
-
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
                 var role = new IdentityRole { Name = roleName };
@@ -45,7 +44,8 @@ namespace Roland.Data.Migrations
                     UserName = AdministratorUserName,
                     Email = AdministratorUserName,
                     EmailConfirmed = true,
-                    CreatedOn = DateTime.Now
+                    CreatedOn = DateTime.Now,
+                    UserType = UserType.Admin
                 };
 
                 userManager.Create(user, AdministratorPassword);
@@ -55,30 +55,18 @@ namespace Roland.Data.Migrations
 
         private void SeedSampleData(MsSqlDbContext context)
         {
-            if (!context.Posts.Any())
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    var post = new Post()
-                    {
-                        Title = "Post " + i,
-                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lobortis nibh. Nullam bibendum, tortor quis porttitor fringilla, eros risus consequat orci, at scelerisque mauris dolor sit amet nulla. Vivamus turpis lorem, pellentesque eget enim ut, semper faucibus tortor. Aenean malesuada laoreet lorem.",
-                        Author = context.Users.First(x => x.Email == AdministratorUserName),
-                        CreatedOn = DateTime.Now
-                    };
-
-                    context.Posts.Add(post);
-                }
-            }
             if (!context.Printers.Any())
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    var printer = new Roland.Data.Model.Printer()
+                    var printer = new Printer()
                     {
                         Model = "MDX-4" + i,
-                        ProductType =  ProductType.Printer + i
-                       
+                        ProductType = ProductType.Printer + i,
+                        PrintHeads = i + 1,
+                        MediaWidth = 600 + (9 * i),
+                        Ink = InkType.EcoSolvent,
+                        MaxSpeed = 10
                     };
 
                     context.Printers.Add(printer);

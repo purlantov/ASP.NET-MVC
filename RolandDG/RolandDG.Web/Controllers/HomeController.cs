@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Roland_ASP_MVC.Controllers
+namespace RolandDG.Web.Controllers
 {
     public class HomeController : Controller
     {

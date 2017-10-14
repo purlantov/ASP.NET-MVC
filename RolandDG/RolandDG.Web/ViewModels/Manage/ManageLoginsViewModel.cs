@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using System.Collections.Generic;
 
-namespace Roland_ASP_MVC.ViewModels.Manage
+namespace RolandDG.Web.ViewModels.Manage
 {
     public class ManageLoginsViewModel
     {

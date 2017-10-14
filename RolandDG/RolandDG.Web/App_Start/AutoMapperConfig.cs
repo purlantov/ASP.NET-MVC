@@ -1,12 +1,11 @@
-﻿using AutoMapper;
-using Roland_ASP_MVC.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Web;
+using AutoMapper;
+using RolandDG.Web.Infrastructure;
 
-namespace Roland_ASP_MVC.App_Start
+namespace RolandDG.Web
 {
     public class AutoMapperConfig
     {

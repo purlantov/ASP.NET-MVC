@@ -26,20 +26,22 @@ namespace RolandDG.Services
             return productsRepo.All;
         }
 
-        public void Add(Product printer)
+        public void Add(Product product)
         {
-            productsRepo.Add(printer);
+            productsRepo.Add(product);
             unitOfWork.Commit();
         }
 
-        public void Delete(Product laptop)
+        public void Delete(Product product)
         {
-            throw new NotImplementedException();
+            this.productsRepo.Delete(product);
+            this.unitOfWork.Commit();
         }
 
-        public void Update(Product laptop)
+        public void Update(Product product)
         {
-            throw new NotImplementedException();
+            this.productsRepo.Update(product);
+            this.unitOfWork.Commit();
         }
     }
 }

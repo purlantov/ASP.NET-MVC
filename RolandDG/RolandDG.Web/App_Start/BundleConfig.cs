@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace Roland_ASP_MVC
+namespace RolandDG.Web
 {
     public class BundleConfig
     {
@@ -9,7 +8,8 @@ namespace Roland_ASP_MVC
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,7 +25,17 @@ namespace Roland_ASP_MVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/navbar-fixet-side.css",
                       "~/Content/site.css"));
+
+            //bundles.Add(new StyleBundle("~/Content/navbar-fixet-side").Include(
+            //    "~/Content/navbar-fixet-side.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
+                "~/Scripts/DataTables/jquery.dataTables.js"));
+
+            bundles.Add(new StyleBundle("~/Content/datatables").Include(
+                "~/Content/DataTables/css/jquery.dataTables.css"));
         }
     }
 }

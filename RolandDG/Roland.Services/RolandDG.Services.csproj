@@ -43,12 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IEngraversService.cs" />
+    <Compile Include="Contracts\IImpactPrintersService.cs" />
     <Compile Include="Contracts\IPrintersService.cs" />
     <Compile Include="Contracts\IService.cs" />
+    <Compile Include="Contracts\IVinylCuttersService.cs" />
+    <Compile Include="EngraversService.cs" />
+    <Compile Include="ImpactPrintersService.cs" />
     <Compile Include="ProductsService.cs" />
     <Compile Include="PrintersService.cs" />
     <Compile Include="Contracts\IProdictsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VinylCuttersService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Roland.Data.Model\Roland.Data.Model.csproj">

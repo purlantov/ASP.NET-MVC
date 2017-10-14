@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Roland.Data.Model.Contracts
 {
-    interface IProduct
+    public interface IProduct
     {
         string Model { get; set; }
 

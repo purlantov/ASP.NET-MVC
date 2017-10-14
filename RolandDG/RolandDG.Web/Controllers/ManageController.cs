@@ -1,15 +1,13 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Roland_ASP_MVC.ViewModels;
-using Roland_ASP_MVC.ViewModels.Manage;
+using RolandDG.Web.ViewModels.Manage;
 
-namespace Roland_ASP_MVC.Controllers
+namespace RolandDG.Web.Controllers
 {
     [Authorize]
     public class ManageController : Controller

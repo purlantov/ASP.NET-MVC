@@ -1,4 +1,4 @@
-﻿namespace Roland_ASP_MVC.Infrastructure
+﻿namespace RolandDG.Web.Infrastructure
 {
     public interface IMapFrom<T>
     {
