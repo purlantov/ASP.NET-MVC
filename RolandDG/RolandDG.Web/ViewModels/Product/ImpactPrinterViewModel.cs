@@ -18,6 +18,6 @@ namespace RolandDG.Web.ViewModels.Product
         [Required]
         public ProductType ProductType = ProductType.ImpactPrinter;
 
-        public Dictionary<string, int> Resolutions { get; set; }
+        //public Dictionary<string, int> Resolutions { get; set; }
     }
 }

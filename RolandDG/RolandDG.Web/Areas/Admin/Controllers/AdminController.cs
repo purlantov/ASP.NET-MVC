@@ -52,35 +52,6 @@ namespace RolandDG.Web.Areas.Admin.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //public ActionResult Products()
-        //{
-        //    ViewData["Title"] = "Products";
-
-
-        //    //var product = this.
-        //    //    .GetAll()
-        //    //    .OrderByDescending(x => x.ModifiedOn)
-        //    //    .ProjectTo<UserViewModel>()
-        //    //    .ToList();
-
-
-        //    //users = users.Select(x =>
-        //    //{
-        //    //    x.Role = this.UserManager
-        //    //        .IsInRole(x.Id, "Admin") ? "Admin" : "User";
-        //    //    return x;
-        //    //}).ToList();
-
-
-        //    //return PartialView(users);
-        //}
-
-        //public ActionResult AddProduct()
-        //{
-        //    return PartialView("_AddPrinter");
-        //}
-
         [HttpGet]
         public ActionResult AddPrinter()
         {
@@ -185,5 +156,7 @@ namespace RolandDG.Web.Areas.Admin.Controllers
 
             return PartialView("_Engravers", viewModel);
         }
+
+
     }
 }

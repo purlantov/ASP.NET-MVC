@@ -3,7 +3,6 @@
     ViewBag.Title = "Home Page";
 }
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +30,27 @@
             margin: auto;
             min-height: 200px;
         }
+
+        /* Centered text */
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #f2f2f2;
+            font-family: sans-serif;
+            font-size: 3em;
+            font-weight: bolder;
+            text-shadow: 2px 2px #000;
+            visibility: hidden;
+        }
+
+        .col-lg-12:hover .centered {
+            visibility: visible;
+        }
     </style>
 </head>
 <body>
-
     <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
@@ -49,6 +65,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Printers", "Printers", "Product")</li>
+                    <li>@Html.ActionLink("Engravers", "Engravers", "Product")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
@@ -56,14 +73,12 @@
             </div>
         </div>
     </div>
-
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
         </ol>
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
@@ -73,7 +88,6 @@
                     <p>All new type printers</p>
                 </div>
             </div>
-
             <div class="item">
                 <img src="~/Images/banner-education-home.jpg" alt="Image">
                 <div class="carousel-caption">
@@ -82,7 +96,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -93,34 +106,43 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
     <div class="container text-center">
         <h3>What We Do</h3><br>
         <div class="row">
             <div class="col-lg-12">
-                <img src="~/Images/printing.jpg" class="img-responsive" style="width:100%" alt="Image">
+                <a href="../Product/Printers">
+                    <img src="~/Images/printing.jpg" class="img-responsive" style="width: 100%" alt="Image">
+                    <div class="centered"> PRITNERS </div>
+                </a>
                 <p>&nbsp;</p>
             </div>
             <div class="col-lg-12">
-                <img src="~/Images/cutting.jpg" class="img-responsive" style="width:100%" alt="Image">
-                <p>&nbsp;</p>
-            </div>   
-            <div class="col-lg-12">
-                <img src="~/Images/med-dental.jpg" class="img-responsive" style="width:100%" alt="Image">
+                <a href="../Product/Cutters">
+                    <img src="~/Images/cutting.jpg" class="img-responsive" style="width:100%" alt="Image">
+                    <div class="centered"> CUTTERS </div>
+                </a>
                 <p>&nbsp;</p>
             </div>
             <div class="col-lg-12">
-                <img src="~/Images/engravers.jpg" class="img-responsive" style="width:100%" alt="Image">
+                <a href="../Product/ImpactPrinters">
+                    <img src="~/Images/med-dental.jpg" class="img-responsive" style="width:100%" alt="Image">
+                    <div class="centered"> IMPACT PRINTERS </div>
+                </a>
+                <p>&nbsp;</p>
+            </div>
+            <div class="col-lg-12">
+                <a href="../Product/Engravers">
+                    <img src="~/Images/engravers.jpg" class="img-responsive" style="width:100%" alt="Image">
+                    <div class="centered"> ENGRAVERS </div>
+                </a>
                 <p>&nbsp;</p>
             </div>
         </div>
     </div><br>
-
     <footer class="container-fluid text-center">
         <a href="https://github.com/purlantov/ASP.NET-MVC" target="_blank">
             <p>ASP.NET Project</p>
         </a>
     </footer>
-
 </body>
 </html>

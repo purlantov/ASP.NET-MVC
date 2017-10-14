@@ -5,6 +5,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNet.Identity;
 using Roland.Data.Model;
+using RolandDG.Services;
 using RolandDG.Services.Contracts;
 using RolandDG.Web.ViewModels.Product;
 
@@ -14,14 +15,27 @@ namespace RolandDG.Web.Controllers
     {
         private readonly IMapper mapper;
         private readonly IPrintersService printersService;
+        private readonly IImpactPrintersService impactPrintersService;
+        private readonly IEngraversService engraversService;
+        private readonly IVinylCuttersService vinylCuttersService;
 
-        public ProductController(IMapper mapper, IPrintersService printersService)
+        public ProductController(IMapper mapper, IPrintersService printersService,
+            IImpactPrintersService impactPrinterService, IEngraversService engraversService,
+            IVinylCuttersService vinylCuttersService)
         {
             this.mapper = mapper;
             this.printersService = printersService;
+            this.impactPrintersService = impactPrinterService;
+            this.engraversService = engraversService;
+            this.vinylCuttersService = vinylCuttersService;
         }
 
-
+        // GET: Product
+        public ActionResult Index()
+        {
+            return View();
+        }
+         
         [HttpGet]
         public ActionResult Printer(Guid Id)
         {
@@ -77,10 +91,71 @@ namespace RolandDG.Web.Controllers
         }
 
 
-        // GET: Product
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Engravers()
         {
-            return View();
+            ViewData["Title"] = "Engravers";
+
+            var engravers = engraversService
+                .GetAll()
+                .ProjectTo<EngraverViewModel>()
+                .ToList();
+
+            return View(engravers);
+        }
+
+        [HttpGet]
+        public ActionResult Engraver(Guid Id)
+        {
+            ViewData["Title"] = "Engraver";
+
+            var engraver = engraversService
+                .GetAll()
+                .ProjectTo<EngraverViewModel>()
+                .Single(x => x.Id == Id);
+
+            //var printerViewModel = mapper.Map<PrinterViewModel>(printer);
+
+            return View(engraver);
+        }
+
+        [HttpGet]
+        public ActionResult Cutters()
+        {
+            ViewData["Title"] = "Cutters";
+
+            var cutters = vinylCuttersService
+                .GetAll()
+                .ProjectTo<VinylCutterViewModel>()
+                .ToList();
+
+            return View(cutters);
+        }
+
+        [HttpGet]
+        public ActionResult Cutter(Guid Id)
+        {
+            ViewData["Title"] = "Cutter";
+
+            var cutter = vinylCuttersService
+                .GetAll()
+                .ProjectTo<VinylCutterViewModel>()
+                .Single(x => x.Id == Id);
+
+            return View(cutter);
+        }
+
+        [HttpGet]
+        public ActionResult ImpactPrinters()
+        {
+            ViewData["Title"] = "ImpactPrinters";
+
+            var impactPrinters = impactPrintersService
+                .GetAll()
+                .ProjectTo<ImpactPrinterViewModel>()
+                .ToList();
+
+            return View(impactPrinters);
         }
     }
 }

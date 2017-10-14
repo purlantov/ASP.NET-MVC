@@ -1,0 +1,25 @@
+﻿@model ICollection<RolandDG.Web.ViewModels.Product.EngraverViewModel>    
+
+@{
+    ViewBag.Title = "Engravers";
+}         
+
+<h2>@ViewBag.Title</h2>
+
+@foreach (var engraver in Model)
+{
+    <div class="row">
+        <div class="col-md-7">
+            <a href="@Url.Action("Engraver", "Product",  new { engraver.Id }, null)">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" style="width: 100%" alt="">
+            </a>
+        </div>
+        <div class="col-md-5">
+            <h3>Roland @engraver.Model</h3>
+            <p>Category: @engraver.ProductType</p>
+            <a class="btn btn-primary" href="@Url.Action("Engraver", "Product",  new { engraver.Id }, null)">View Product</a>
+        </div>
+
+    </div>
+    <hr />
+}
