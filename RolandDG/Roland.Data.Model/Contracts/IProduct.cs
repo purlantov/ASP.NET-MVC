@@ -10,6 +10,6 @@ namespace Roland.Data.Model.Contracts
     {
         string Model { get; set; }
 
-        ProductType ProductType { get; set; }
+        string ProductType { get; set; }
     }
 }

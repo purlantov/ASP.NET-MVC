@@ -10,14 +10,14 @@
 {
     <div class="row">
         <div class="col-md-7">
-            <a href="@Url.Action("Cutters", "Product",  new { impactPrinters.Id }, null)">
-                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" style="width: 100%" alt="">
+            <a href="@Url.Action("ImpactPrinter", "Product",  new { impactPrinters.Id }, null)">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="~/Images/impact-printers.jpg" style="width: 100%" alt="">
             </a>
         </div>
         <div class="col-md-5">
             <h3>Roland @impactPrinters.Model</h3>
             <p>Category: @impactPrinters.ProductType</p>
-            <a class="btn btn-primary" href="@Url.Action("Cutters", "Product",  new { impactPrinters.Id }, null)">View Product</a>
+            <a class="btn btn-primary" href="@Url.Action("ImpactPrinter", "Product",  new { impactPrinters.Id }, null)">View Product</a>
         </div>
 
     </div>

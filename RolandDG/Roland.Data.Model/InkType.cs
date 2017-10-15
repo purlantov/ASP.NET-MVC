@@ -2,9 +2,9 @@
 {
     public enum InkType
     {
-        EcoSolvent,
-        Pigment,
-        UV,
-        Sublimation
+        EcoSolvent = 1,
+        Pigment = 2,
+        UV = 3,
+        Sublimation = 4
     }
 }

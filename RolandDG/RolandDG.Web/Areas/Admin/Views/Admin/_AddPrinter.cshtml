@@ -1,9 +1,11 @@
 ﻿@using Roland.Data.Model
 @model RolandDG.Web.ViewModels.Product.PrinterViewModel
-
+ 
+<div> Add Printer</div>
 @*@using (Html.BeginForm("AddPrinter", "Product"))*@
 @using (Ajax.BeginForm("AddPrinter", "Admin",
-                            new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content", InsertionMode = InsertionMode.Replace, OnComplete = "ParsUnob" }))
+                            new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content",
+                                InsertionMode = InsertionMode.Replace, OnComplete = "ParsUnob" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-group">

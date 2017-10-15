@@ -101,6 +101,30 @@
     <Compile Include="Migrations\201710140624076_addPrintersToSeedMethod.Designer.cs">
       <DependentUpon>201710140624076_addPrintersToSeedMethod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710142059260_ImpactPrinter change Dictionary with HashSet.cs" />
+    <Compile Include="Migrations\201710142059260_ImpactPrinter change Dictionary with HashSet.Designer.cs">
+      <DependentUpon>201710142059260_ImpactPrinter change Dictionary with HashSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710142104396_ImpactPrinter change Dictionary with ICollerction.cs" />
+    <Compile Include="Migrations\201710142104396_ImpactPrinter change Dictionary with ICollerction.Designer.cs">
+      <DependentUpon>201710142104396_ImpactPrinter change Dictionary with ICollerction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710142108251_ImpactPrinter change Dictionary to one Resolution.cs" />
+    <Compile Include="Migrations\201710142108251_ImpactPrinter change Dictionary to one Resolution.Designer.cs">
+      <DependentUpon>201710142108251_ImpactPrinter change Dictionary to one Resolution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710142113598_ProductType.cs" />
+    <Compile Include="Migrations\201710142113598_ProductType.Designer.cs">
+      <DependentUpon>201710142113598_ProductType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710150655213_SeedMetodSampleData.cs" />
+    <Compile Include="Migrations\201710150655213_SeedMetodSampleData.Designer.cs">
+      <DependentUpon>201710150655213_SeedMetodSampleData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710150840407_ProductType set to default in constructor.cs" />
+    <Compile Include="Migrations\201710150840407_ProductType set to default in constructor.Designer.cs">
+      <DependentUpon>201710150840407_ProductType set to default in constructor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,6 +152,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710140624076_addPrintersToSeedMethod.resx">
       <DependentUpon>201710140624076_addPrintersToSeedMethod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710142059260_ImpactPrinter change Dictionary with HashSet.resx">
+      <DependentUpon>201710142059260_ImpactPrinter change Dictionary with HashSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710142104396_ImpactPrinter change Dictionary with ICollerction.resx">
+      <DependentUpon>201710142104396_ImpactPrinter change Dictionary with ICollerction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710142108251_ImpactPrinter change Dictionary to one Resolution.resx">
+      <DependentUpon>201710142108251_ImpactPrinter change Dictionary to one Resolution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710142113598_ProductType.resx">
+      <DependentUpon>201710142113598_ProductType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710150655213_SeedMetodSampleData.resx">
+      <DependentUpon>201710150655213_SeedMetodSampleData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710150840407_ProductType set to default in constructor.resx">
+      <DependentUpon>201710150840407_ProductType set to default in constructor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

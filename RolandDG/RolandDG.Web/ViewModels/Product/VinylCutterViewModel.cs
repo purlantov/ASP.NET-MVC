@@ -15,7 +15,7 @@ namespace RolandDG.Web.ViewModels.Product
         public string Model { get; set; }
 
         [Required]
-        public ProductType ProductType = ProductType.VinylCutter;
+        public string ProductType { get; set; }
 
         [Required]
         [Range(1, 30)]

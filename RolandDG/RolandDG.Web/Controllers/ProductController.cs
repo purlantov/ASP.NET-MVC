@@ -157,5 +157,18 @@ namespace RolandDG.Web.Controllers
 
             return View(impactPrinters);
         }
+
+        [HttpGet]
+        public ActionResult ImpactPrinter(Guid Id)
+        {
+            ViewData["Title"] = "ImpactPrinter";
+
+            var impactPrinter = impactPrintersService
+                .GetAll()
+                .ProjectTo<ImpactPrinterViewModel>()
+                .Single(x => x.Id == Id);
+
+            return View(impactPrinter);
+        }
     }
 }

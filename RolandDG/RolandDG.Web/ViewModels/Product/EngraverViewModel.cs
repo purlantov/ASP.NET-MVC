@@ -1,11 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Roland.Data.Model;
 using RolandDG.Web.Infrastructure;
 
 namespace RolandDG.Web.ViewModels.Product
 {
-    public class EngraverViewModel  : IMapFrom<Engraver>
+    public class EngraverViewModel : IMapFrom<Engraver>
     {
         public Guid Id { get; set; }
 
@@ -15,7 +16,7 @@ namespace RolandDG.Web.ViewModels.Product
         public string Model { get; set; }
 
         [Required]
-        public ProductType ProductType = ProductType.Engravers;
+        public string ProductType { get; set; }
 
         [Required]
         [Range(1, 100)]

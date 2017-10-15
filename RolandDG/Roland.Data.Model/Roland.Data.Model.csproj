@@ -96,7 +96,6 @@
     <Compile Include="InkType.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="Product.cs" />
-    <Compile Include="ProductType.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Contracts\IAuditable.cs" />
     <Compile Include="Contracts\IDeletable.cs" />

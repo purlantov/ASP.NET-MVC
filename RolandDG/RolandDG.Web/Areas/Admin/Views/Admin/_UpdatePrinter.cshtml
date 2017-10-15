@@ -4,7 +4,7 @@
 <div> Update Printer</div>
 @*@using (Html.BeginForm("UpdatePrinter", "Admin"))*@
 @using (Ajax.BeginForm("UpdatePrinter", "Admin",
-                        new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "admin-container",
+                        new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "content",
                             InsertionMode = InsertionMode.Replace, OnComplete = "ParsUnob" }))
 {
     <div class="form-group">

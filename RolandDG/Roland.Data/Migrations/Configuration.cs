@@ -57,19 +57,69 @@ namespace Roland.Data.Migrations
         {
             if (!context.Printers.Any())
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 1; i < 6; i++)
                 {
                     var printer = new Printer()
                     {
-                        Model = "MDX-4" + i,
-                        ProductType = ProductType.Printer + i,
-                        PrintHeads = i + 1,
-                        MediaWidth = 600 + (9 * i),
+                        Model = "SP-" + i + "40",
+                        ProductType = "Printer",
+                        PrintHeads = i,
+                        MediaWidth = 600 + (9 + i),
                         Ink = InkType.EcoSolvent,
                         MaxSpeed = 10
                     };
 
                     context.Printers.Add(printer);
+                }
+            }
+
+            if (!context.Engravers.Any())
+            {
+                for (int i = 1; i < 6; i++)
+                {
+                    var engraver = new Engraver()
+                    {
+                        Model = "EGX-" + (i+1) + "00",
+                        ProductType = "Engraver",
+                        RPM = 8000+(i*1000),
+                        TableWidth = i+320,
+                        TableDepth = 500,
+                        MaxSpeed = 10
+                    };
+
+                    context.Engravers.Add(engraver);
+                }
+            }
+
+            if (!context.VinylCutters.Any())
+            {
+                for (int i = 1; i < 6; i++)
+                {
+                    var cutter = new VinylCutter()
+                    {
+                        Model = "GX-" + (i + 1) + "00",
+                        ProductType = "Vinyl Cutter",
+                        CuttingSpeed = 30,
+                        BladeForce = 30,
+                        MediaWidth = 300+(200*i)
+                    };
+
+                    context.VinylCutters.Add(cutter);
+                }
+            }
+
+            if (!context.ImpactPrinters.Any())
+            {
+                for (int i = 1; i < 6; i++)
+                {
+                    var impactPrinter = new ImpactPrinter()
+                    {
+                        Model = "MPX-9" + i,
+                        ProductType = "Impact Printer",
+                        Resolution = 800
+                    };
+
+                    context.ImpactPrinters.Add(impactPrinter);
                 }
             }
         }

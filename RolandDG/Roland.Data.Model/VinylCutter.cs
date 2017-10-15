@@ -6,13 +6,18 @@ namespace Roland.Data.Model
 {
     public class VinylCutter : DataModel, IProduct
     {
+        public VinylCutter()
+        {
+            ProductType = "VinylCutter";
+        }
+
         [Required]
         [MinLength(4)]
         [MaxLength(30)]
         public string Model { get; set; }
 
         [Required]
-        public ProductType ProductType { get; set; }
+        public string ProductType { get; set; }
 
         [Required]
         [Range(1, 30)]

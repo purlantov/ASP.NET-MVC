@@ -48,6 +48,7 @@
                     </td>
 
                     <td>
+                        @Ajax.ActionLink("EDIT", "UpdateEngraver", "Admin", new { engraver.Id }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "content" })
                         <a class="btn btn-primary" target="_blank" href="@editLink">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>

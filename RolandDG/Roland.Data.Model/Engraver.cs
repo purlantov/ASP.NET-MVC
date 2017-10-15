@@ -6,13 +6,18 @@ namespace Roland.Data.Model
 {
     public class Engraver : DataModel, IProduct
     {
+        public Engraver()
+        {
+            ProductType = "Engraver";
+        }
+
         [Required]
         [MinLength(4)]
         [MaxLength(30)]
         public string Model { get; set; }
 
         [Required]
-        public ProductType ProductType { get; set; }
+        public string ProductType { get; set; }
 
         [Required]
         [Range(1, 100)]
