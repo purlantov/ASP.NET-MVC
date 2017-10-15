@@ -1,5 +1,6 @@
 ﻿@using Roland.Data.Model
 @model RolandDG.Web.ViewModels.Product.VinylCutterViewModel
+@Scripts.Render("~/bundles/jqueryval")
 
 <div> Add Vinyl Cutter</div>
 @*@using (Html.BeginForm("AddPrinter", "Product"))*@
@@ -16,22 +17,22 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Model)
         @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Model)
+        @Html.ValidationMessageFor(m => m.Model, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.MediaWidth)
         @Html.TextBoxFor(m => m.MediaWidth, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.MediaWidth)
+        @Html.ValidationMessageFor(m => m.MediaWidth, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.BladeForce)
         @Html.TextBoxFor(m => m.BladeForce, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.BladeForce)
+        @Html.ValidationMessageFor(m => m.BladeForce, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.CuttingSpeed)
         @Html.TextBoxFor(m => m.CuttingSpeed, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.CuttingSpeed)
+        @Html.ValidationMessageFor(m => m.CuttingSpeed, "", new { @class = "text-danger" })
     </div>
 
 
@@ -39,7 +40,7 @@
 
 }
 
-<script>
+@*<script>
     function ParsUnob() {
         $.validator.unobtrusive.parse("#content");
     }
@@ -48,4 +49,4 @@
 {
     @Scripts.Render("~/bundles/jqueryval")
 
-}
+}*@

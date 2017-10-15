@@ -1,5 +1,6 @@
 ﻿@using Roland.Data.Model
-@model RolandDG.Web.ViewModels.Product.PrinterViewModel
+@model RolandDG.Web.ViewModels.Product.PrinterViewModel   
+@Scripts.Render("~/bundles/jqueryval")
  
 <div> Add Printer</div>
 @*@using (Html.BeginForm("AddPrinter", "Product"))*@
@@ -11,7 +12,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Model)
         @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Model)
+        @Html.ValidationMessageFor(m => m.Model, "", new { @class = "text-danger" })
     </div>
  
     <div class="form-group">
@@ -26,22 +27,22 @@
         }
         @Html.LabelFor(m => m.Ink)
         @Html.DropDownListFor(m => m.ProductType, new SelectList(inkType), " ", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Ink)
+        @Html.ValidationMessageFor(m => m.Ink, "", new { @class = "text-danger" })
     </div>
         <div class="form-group">
             @Html.LabelFor(m => m.MediaWidth)
             @Html.TextBoxFor(m => m.MediaWidth, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.MediaWidth)
+            @Html.ValidationMessageFor(m => m.MediaWidth, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.PrintHeads)
             @Html.TextBoxFor(m => m.PrintHeads, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.PrintHeads)
+            @Html.ValidationMessageFor(m => m.PrintHeads, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.MaxSpeed)
             @Html.TextBoxFor(m => m.MaxSpeed, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.MaxSpeed)
+            @Html.ValidationMessageFor(m => m.MaxSpeed, "", new { @class = "text-danger" })
         </div>
 
 
@@ -49,15 +50,9 @@
 
 }
        
-<script>
+@*<script>
     function ParsUnob() {
         $.validator.unobtrusive.parse("#content");
     }
-</script>
-
-@section scripts
-{
-    @Scripts.Render("~/bundles/jqueryval")
-    
-}
+</script>*@
 

@@ -35,7 +35,7 @@
 
                     <td>
                         <a class="btn btn-primary" target="_blank"
-                           href="@Url.Action($"Update{type}", "Admin", new { id = user.Id }, null)">
+                           href="@Url.Action(string.Format("Update{0}/{1}", type,user.Id), "Admin", new { id = user.Id }, null)">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                     </td>
@@ -54,7 +54,7 @@
 
 <script>
     $(document).ready(function () {
-        $('#usersTable').DataTable();
+        $('#content').DataTable();
     });
 
     $(".btn-danger").on('click', (event) => {
@@ -63,7 +63,7 @@
     });
 
     $('#refreshButton').on('click', () => {
-        let url = '/administration/adminpanel/users';
+        let url = '/admin/admin/users';
         content.load(url);
     })
 </script>

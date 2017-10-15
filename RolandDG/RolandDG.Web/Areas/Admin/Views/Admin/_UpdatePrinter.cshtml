@@ -1,5 +1,7 @@
 ﻿@using Roland.Data.Model
 @model RolandDG.Web.ViewModels.Product.PrinterViewModel
+@Scripts.Render("~/bundles/jqueryval")
+
     
 <div> Update Printer</div>
 @*@using (Html.BeginForm("UpdatePrinter", "Admin"))*@
@@ -47,16 +49,3 @@
     <button type="submit" class="btn btn-primary">Save</button>
 
 }
-
-<script>
-    function ParsUnob() {
-        $.validator.unobtrusive.parse("#content");
-    }
-</script>
-
-@section scripts
-{
-    @Scripts.Render("~/bundles/jqueryval")
-
-}
-

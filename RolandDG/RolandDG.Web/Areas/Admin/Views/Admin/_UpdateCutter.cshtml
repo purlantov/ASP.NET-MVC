@@ -1,6 +1,8 @@
 ﻿@using Microsoft.Ajax.Utilities
 @using Roland.Data.Model
-@model RolandDG.Web.ViewModels.Product.VinylCutterViewModel
+@model RolandDG.Web.ViewModels.Product.VinylCutterViewModel    
+@Scripts.Render("~/bundles/jqueryval")
+
 <div>Update Vinyl Cutter</div>
 @*@using (Html.BeginForm("AddPrinter", "Product"))*@
 @using (Ajax.BeginForm("UpdateCutter", "Admin",
@@ -16,37 +18,26 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Model)
         @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Model)
+        @Html.ValidationMessageFor(m => m.Model, "", new { @class = "text-danger" })
     </div>
     <div class="hidden">
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.CuttingSpeed)
         @Html.TextBoxFor(m => m.CuttingSpeed, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.CuttingSpeed)
+        @Html.ValidationMessageFor(m => m.CuttingSpeed, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.BladeForce)
         @Html.TextBoxFor(m => m.BladeForce, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.BladeForce)
+        @Html.ValidationMessageFor(m => m.BladeForce, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.MediaWidth)
         @Html.TextBoxFor(m => m.MediaWidth, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.MediaWidth)
+        @Html.ValidationMessageFor(m => m.MediaWidth, "", new { @class = "text-danger" })
     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>
 
 }
-@section scripts
-{
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        function ParsUnob() {
-            $.validator.unobtrusive.parse("#content");
-        }
-    </script>
-}
-
-

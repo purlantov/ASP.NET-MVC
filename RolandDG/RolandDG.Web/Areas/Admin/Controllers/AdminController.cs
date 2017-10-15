@@ -90,7 +90,7 @@ namespace RolandDG.Web.Areas.Admin.Controllers
                     ModifiedOn = DateTime.Now
                 };
 
-                var result = this.verification.Register(user, model.Password);
+                //var result = this.verification.Register(user, model.Password);
             }
             return RedirectToAction("Index", "Admin");
         }
@@ -107,12 +107,12 @@ namespace RolandDG.Web.Areas.Admin.Controllers
                 .ProjectTo<UserViewModel>()
                 .ToList();
 
-            users = users.Select(x =>
-            {
-                x.Role = this.verification
-                .IsInRole(x.Id, "Admin") ? "Admin" : "User";
-                return x;
-            }).ToList();
+            //users = users.Select(x =>
+            //{
+            //    x.Role = this.verification
+            //    .IsInRole(x.Id, "Admin") ? "Admin" : "User";
+            //    return x;
+            //}).ToList();
 
             return PartialView(users);
         }

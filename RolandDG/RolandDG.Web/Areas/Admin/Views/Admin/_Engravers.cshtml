@@ -1,12 +1,9 @@
 ﻿@model RolandDG.Web.ViewModels.Product.ProductViewModel
-
 <h3 class="centerText">
     <span>All printers</span>
     <button id="refreshButton" class='btn btn-default pull-right'>Refresh</button>
 </h3>
-
 <hr />
-
 <div class="table-responsive">
     <table id="computersTable" class="table table-hover">
         <thead>
@@ -21,7 +18,6 @@
                 <th>Delete</th>
             </tr>
         </thead>
-
         <tbody>
             @foreach (var engraver in Model.EngraversCollection)
             {
@@ -35,25 +31,19 @@
                     <td>@Html.DisplayFor(x => engraver.RPM)</td>
                     <td>@Html.DisplayFor(x => engraver.TableWidth) mm</td>
                     <td>@engraver.TableDepth mm</td>
-
                     @{
                         string adLink = string.Format("/product/{0}/{1}", deviceType, engraver.Id);
                         string editLink = string.Format("/product/update{0}/{1}", deviceType, engraver.Id);
                     }
-
                     <td>
                         <a class="btn btn-default" target="_blank" href="@adLink">
                             <span class="glyphicon glyphicon-search"></span>
                         </a>
                     </td>
-
                     <td>
                         @Ajax.ActionLink("EDIT", "UpdateEngraver", "Admin", new { engraver.Id }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, UpdateTargetId = "content" })
-                        <a class="btn btn-primary" target="_blank" href="@editLink">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
+                        <span class="glyphicon glyphicon-pencil"></span>
                     </td>
-
 
                     <td>
                         @Ajax.ActionLink("X", "Index", "Admin",
@@ -65,7 +55,6 @@
         </tbody>
     </table>
 </div>
-
 <script>
     $(document).ready(function () {
         $('#content').DataTable();
@@ -81,5 +70,4 @@
         content.load(url);
     })
 </script>
-
 
