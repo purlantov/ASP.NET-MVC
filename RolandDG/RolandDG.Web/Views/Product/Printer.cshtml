@@ -1,7 +1,29 @@
 ﻿@model RolandDG.Web.ViewModels.Product.PrinterViewModel
 
-<h2>Printer printer</h2>
-<div>
-    Printer @Model.Model
-    
+
+
+<!-- Item Heading -->
+<h1 class="my-4">Roland
+    <small>Wide format printers</small>
+</h1>
+
+<!-- Item Row -->
+<div class="row">
+
+    <div class="col-md-8">
+        <img class="img-fluid img-responsive" src="~/Images/printer.jpg" alt="">
+    </div>
+
+    <div class="col-md-4">
+        <h3 class="my-3">Roland @Model.Model</h3>
+        <p>With its two inline, mirrored print heads, integrated printing and contour-cutting technology, and GREENGUARD Gold Certified Eco-Sol MAX 2 inks in 7 or 8-color configurations, the XR-640 large format printer/cutter with metallic and white ink delivers maximum versatility and productivity with unsurpassed image quality. Thousands of print service providers have built their business on the XR-640, with the ability to produce everything from banners, vehicle wraps and fine art to print/cut labels, decals, point-of-purchase displays and so much more.</p>
+        <h3 class="my-3">Printer Details</h3>
+        <ul>
+            <li>Max Speed: @Model.MaxSpeed &#13217/h;</li>
+            <li>Ink type: @Model.Ink</li>
+            <li>Max media Width: @Model.MediaWidth mm</li>
+            <li>Number of Heads: @Model.PrintHeads</li>
+        </ul>
+    </div>
+
 </div>

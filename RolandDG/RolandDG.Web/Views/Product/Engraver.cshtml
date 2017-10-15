@@ -1,8 +1,24 @@
 ﻿@model RolandDG.Web.ViewModels.Product.EngraverViewModel
 
-<h2>Engraver</h2>
-
-<div>
-    Engraver @Model.Model
-    
+<!-- Item Heading -->
+<h1 class="my-4">
+    Roland
+    <small>Automated Engraving Machines</small>
+</h1>
+<!-- Item Row -->
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-fluid img-responsive" src="~/Images/engraver.png" alt="">
+    </div>
+    <div class="col-md-4">
+        <h3 class="my-3">Roland @Model.Model</h3>
+        <p>The EGX is a true price to performance breakthrough in desktop engraving, opening new doors to profits for gift engravers, trophy shops, jewelry retailers and more by combining versatility with quick and easy automated production. With the EGX-350, you can create custom signs, personalized gifts, awards and promotional items at a fraction of the cost of outsourcing.</p>
+        <h3 class="my-3">Printer Details</h3>
+        <ul>
+            <li>Max Speed: @Model.MaxSpeed mm/s;</li>
+            <li>RPMs: @Model.RPM [r/min]</li>
+            <li>Table Width: @Model.TableWidth mm</li>
+            <li>Table Depth: @Model.TableDepth mm</li>
+        </ul>
+    </div>
 </div>

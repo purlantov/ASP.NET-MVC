@@ -1,5 +1,24 @@
 ﻿@model RolandDG.Web.ViewModels.Product.VinylCutterViewModel
-    
-<h2>Cutter</h2>
 
-<p>Model: @Model.Model</p>
+<!-- Item Heading -->
+<h1 class="my-4">
+    Roland
+    <small>Large format and desktop vinyl cutters</small>
+</h1>
+<!-- Item Row -->
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-fluid img-responsive" src="~/Images/cutter.jpg" alt="">
+    </div>
+    <div class="col-md-4">
+        <h3 class="my-3">Roland @Model.Model</h3>
+        <p>Available in 42”, 54” and 64” model sizes, GR cutters are powerful, easy-to-operate devices. Packed with advanced and versatile new features, they are designed for a whole new level of sign, apparel, vehicle graphics and packaging production.</p>
+        <h3 class="my-3">Printer Details</h3>
+        <ul>
+            <li>Cutting Speed: @Model.CuttingSpeed &#13217/h;</li>
+            
+            <li>Max media Width: @Model.MediaWidth mm</li>
+            <li>Blade Force: @Model.BladeForce g/cm</li>
+        </ul>
+    </div>
+</div>

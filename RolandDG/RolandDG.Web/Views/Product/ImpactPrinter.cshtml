@@ -3,6 +3,24 @@
     ViewBag.Title = "ImpactPrinter";
 }
 
-<h2>ImpactPrinter</h2>
-
-<p>Model: @Model.Model</p>
+<!-- Item Heading -->
+<h1 class="my-4">
+    Roland
+    <small>Photo Impact Printer</small>
+</h1>
+<!-- Item Row -->
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-fluid img-responsive" src="~/Images/impact-printer.jpg" alt="">
+    </div>
+    <div class="col-md-4">
+        <h3 class="my-3">Roland @Model.Model</h3>
+        <p>Perfect for kiosk and gift shop applications, the new METAZA MPX-95 photo impact printer with Gift Kit is a low-cost, easy-to-operate solution for personalizing high-value metal items and making them even more unique and profitable.</p>
+        <ul>
+            <li>Operating resolution: @Model.Resolution dpi;</li>
+            <li>Head tip type: Diamond</li>
+            <li>Max media Width: 80 mm</li>
+            <li>Number of Heads: 80</li>
+        </ul>
+    </div>
+</div>
