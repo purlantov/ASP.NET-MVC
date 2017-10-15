@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bytes2you.Validation;
 
 namespace Roland.Data.UnitOfWork
 {
@@ -12,6 +13,7 @@ namespace Roland.Data.UnitOfWork
 
         public UnitOfWork(MsSqlDbContext context)
         {
+            Guard.WhenArgument(context, nameof(context)).IsNull().Throw();
             this.context = context;
         }
 

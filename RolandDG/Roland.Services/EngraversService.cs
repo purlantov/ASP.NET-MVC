@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bytes2you.Validation;
 using Roland.Data.Model;
 using Roland.Data.Repositories;
 using Roland.Data.UnitOfWork;
@@ -17,6 +18,8 @@ namespace RolandDG.Services
 
         public EngraversService(IEfRepository<Engraver> productsRepo,IUnitOfWork unitOfWork)
         {
+            Guard.WhenArgument(productsRepo, nameof(productsRepo)).IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, nameof(unitOfWork)).IsNull().Throw();
             this.engraversRepo = productsRepo;
             this.unitOfWork = unitOfWork;
         }

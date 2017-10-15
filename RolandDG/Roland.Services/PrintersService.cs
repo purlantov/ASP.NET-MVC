@@ -1,18 +1,22 @@
 ﻿using System.Linq;
+using Bytes2you.Validation;
 using Roland.Data.Model;
 using Roland.Data.Repositories;
 using Roland.Data.UnitOfWork;
+using RolandDG.Services.Contracts;
 
-namespace RolandDG.Services.Contracts
+namespace RolandDG.Services
 {
     public class PrintersService : IPrintersService
     {
         private readonly IEfRepository<Printer> printersRepo;
         private readonly IUnitOfWork unitOfWork;
 
-        public PrintersService(IEfRepository<Printer> productsRepo, IUnitOfWork unitOfWork)
+        public PrintersService(IEfRepository<Printer> printersRepo, IUnitOfWork unitOfWork)
         {
-            this.printersRepo = productsRepo;
+            Guard.WhenArgument(printersRepo, nameof(printersRepo)).IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, nameof(unitOfWork)).IsNull().Throw();
+            this.printersRepo = printersRepo;
             this.unitOfWork = unitOfWork;
         }
 
@@ -23,8 +27,8 @@ namespace RolandDG.Services.Contracts
 
         public void Add(Printer printer)
         {
-            this.printersRepo.Add(printer);
-            this.unitOfWork.Commit();
+            printersRepo.Add(printer);
+            unitOfWork.Commit();
         }
 
         public void Delete(Printer printer)

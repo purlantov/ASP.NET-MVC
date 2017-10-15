@@ -56,7 +56,6 @@
     <Compile Include="Contracts\IVinylCuttersService.cs" />
     <Compile Include="EngraversService.cs" />
     <Compile Include="ImpactPrintersService.cs" />
-    <Compile Include="ProductsService.cs" />
     <Compile Include="PrintersService.cs" />
     <Compile Include="Contracts\IProdictsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

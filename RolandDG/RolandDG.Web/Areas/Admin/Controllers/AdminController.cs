@@ -48,6 +48,8 @@ namespace RolandDG.Web.Areas.Admin.Controllers
             Guard.WhenArgument(engraversService, nameof(engraversService)).IsNull().Throw();
             Guard.WhenArgument(vinylCuttersService, nameof(vinylCuttersService)).IsNull().Throw();
 
+            this.httpContext = httpContext;
+            this.verification = verification;
             this.usersService = usersService;
             this.mapper = mapper;
             this.printersService = printersService;

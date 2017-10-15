@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using Bytes2you.Validation;
 using Roland.Data.Model;
 using Roland.Data.Repositories;
 using Roland.Data.UnitOfWork;
@@ -15,33 +12,35 @@ namespace RolandDG.Services
         private readonly IEfRepository<VinylCutter> vinylCuttersRepo;
         private readonly IUnitOfWork unitOfWork;
 
-        public VinylCuttersService(IEfRepository<VinylCutter> productsRepo, IUnitOfWork unitOfWork)
+        public VinylCuttersService(IEfRepository<VinylCutter> vinylCutterRepoRepo, IUnitOfWork unitOfWork)
         {
-            this.vinylCuttersRepo = productsRepo;
+            Guard.WhenArgument(vinylCutterRepoRepo, nameof(vinylCutterRepoRepo)).IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, nameof(unitOfWork)).IsNull().Throw();
+            this.vinylCuttersRepo = vinylCutterRepoRepo;
             this.unitOfWork = unitOfWork;
         }
 
         public IQueryable<VinylCutter> GetAll()
         {
-            return this.vinylCuttersRepo.All;
+            return vinylCuttersRepo.All;
         }
 
         public void Add(VinylCutter vinylCutter)
         {
-            this.vinylCuttersRepo.Add(vinylCutter);
-            this.unitOfWork.Commit();
+            vinylCuttersRepo.Add(vinylCutter);
+            unitOfWork.Commit();
         }
 
         public void Delete(VinylCutter vinylCutter)
         {
-            this.vinylCuttersRepo.Delete(vinylCutter);
-            this.unitOfWork.Commit();
+            vinylCuttersRepo.Delete(vinylCutter);
+            unitOfWork.Commit();
         }
 
         public void Update(VinylCutter vinylCutter)
         {
-            this.vinylCuttersRepo.Update(vinylCutter);
-            this.unitOfWork.Commit();
+            vinylCuttersRepo.Update(vinylCutter);
+            unitOfWork.Commit();
         }
     }
 }
