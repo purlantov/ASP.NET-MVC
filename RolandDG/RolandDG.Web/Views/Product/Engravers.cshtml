@@ -1,4 +1,5 @@
-﻿@model ICollection<RolandDG.Web.ViewModels.Product.EngraverViewModel>    
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<RolandDG.Web.ViewModels.Product.EngraverViewModel>    
 
 @{
     ViewBag.Title = "Engravers";
@@ -23,3 +24,7 @@
     </div>
     <hr />
 }
+
+<div align="center">
+    @Html.PagedListPager(Model, page => Url.Action("Engravers", new { page }))
+</div>

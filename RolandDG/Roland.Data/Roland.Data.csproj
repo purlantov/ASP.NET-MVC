@@ -126,6 +126,10 @@
     <Compile Include="Migrations\201710150840407_ProductType set to default in constructor.Designer.cs">
       <DependentUpon>201710150840407_ProductType set to default in constructor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710160214458_RemoveProductsModel.cs" />
+    <Compile Include="Migrations\201710160214458_RemoveProductsModel.Designer.cs">
+      <DependentUpon>201710160214458_RemoveProductsModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710150840407_ProductType set to default in constructor.resx">
       <DependentUpon>201710150840407_ProductType set to default in constructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710160214458_RemoveProductsModel.resx">
+      <DependentUpon>201710160214458_RemoveProductsModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

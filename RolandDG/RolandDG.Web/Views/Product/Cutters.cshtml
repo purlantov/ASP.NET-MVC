@@ -1,4 +1,5 @@
-﻿@model ICollection<RolandDG.Web.ViewModels.Product.VinylCutterViewModel>    
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<RolandDG.Web.ViewModels.Product.VinylCutterViewModel>    
 
 @{
     ViewBag.Title = "Cutters";
@@ -23,3 +24,7 @@
     </div>
     <hr />
 }
+
+<div align="center">
+    @Html.PagedListPager(Model, page => Url.Action("Cutters", new { page }))
+</div>

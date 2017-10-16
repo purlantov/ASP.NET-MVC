@@ -115,6 +115,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ProductControllerTests.cs" />
     <Compile Include="Data\EfRepositoryTests.cs" />
     <Compile Include="Data\MsSqlDbContextTests.cs" />
     <Compile Include="Data\UnitOfWorkTests.cs" />

@@ -14,7 +14,7 @@ namespace Roland.Data
         {
         }
 
-        public IDbSet<Product> Products { get; set; }
+        //public IDbSet<Product> Products { get; set; }
         public IDbSet<Printer> Printers { get; set; }
         public IDbSet<Engraver> Engravers { get; set; }
         public IDbSet<VinylCutter> VinylCutters { get; set; }
