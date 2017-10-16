@@ -12,10 +12,36 @@ using RolandDG.Web.ViewModels.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Helpers;
+using System.Web.Mvc;
+using System.Web.Routing;
 using TestStack.FluentMVCTesting;
 
 namespace RolandDG.Tests.Controllers
 {
+    public static class FakeController
+    {
+        public static void MakeAjaxRequest(this Controller controller)
+        {
+            // First create request with X-Requested-With header set
+            Mock<HttpRequestBase> httpRequest = new Mock<HttpRequestBase>();
+            httpRequest.SetupGet(x => x.Headers).Returns(
+                new WebHeaderCollection() {
+                    {"X-Requested-With", "XMLHttpRequest"}
+                }
+            );
+
+            // Then create contextBase using above request
+            Mock<HttpContextBase> httpContext = new Mock<HttpContextBase>();
+            httpContext.SetupGet(x => x.Request).Returns(httpRequest.Object);
+
+            // Set controllerContext
+            controller.ControllerContext = new ControllerContext(httpContext.Object, new RouteData(), controller);
+        }
+    }
+
     [TestFixture]
     public class AdminControllerTests
     {
@@ -281,61 +307,240 @@ namespace RolandDG.Tests.Controllers
 
         }
 
+        //[Test]
+        //public void Index_ShouldReturnsTrue_WhenComputers_AreValid()
+        //{
+        //    // Arrange
+        //    Mapper.Initialize(cfg =>
+        //    {
+        //        cfg.CreateMap<Printer, PrinterViewModel>();
+        //        cfg.CreateMap<PrinterViewModel, Printer>();
+
+        //        cfg.CreateMap<ImpactPrinter, ImpactPrinterViewModel>();
+        //        cfg.CreateMap<ImpactPrinterViewModel, ImpactPrinter>();
+
+        //        cfg.CreateMap<Engraver, EngraverViewModel>();
+        //        cfg.CreateMap<EngraverViewModel, Engraver>();
+
+        //        cfg.CreateMap<VinylCutter, VinylCutterViewModel>();
+        //        cfg.CreateMap<VinylCutterViewModel, VinylCutter>();
+
+        //        cfg.CreateMap<User, UserViewModel>();
+        //        cfg.CreateMap<UserViewModel, User>();
+        //    });
+
+        //    var controller = new AdminController(mockedHttpContext.Object, mockedProvider.Object, mockedUsersService.Object,
+        //        mockedMapper.Object, mockedPrinterService.Object, mockedImpactPrinterService.Object, mockedEngraverService.Object, mockedVinylCutterService.Object);
+
+        //    // Act
+        //    var printer = new Printer();
+        //    var impactPrinter = new ImpactPrinter();
+        //    var engraver = new Engraver();
+        //    var cutter = new VinylCutter();
+        //    var user = new User();
+
+        //    var printersCollection = new List<Printer>() { printer };
+        //    var impactPrintersCollection = new List<ImpactPrinter>() { impactPrinter };
+        //    var engraversCollection = new List<Engraver>() { engraver };
+        //    var cuttersCollection = new List<VinylCutter>() { cutter };
+        //    var userssCollection = new List<User>() { user };
+
+
+        //    mockedPrinterService.Setup(c => c.GetAll()).Returns(printersCollection.AsQueryable());
+
+        //    mockedImpactPrinterService.Setup(c => c.GetAll()).Returns(impactPrintersCollection.AsQueryable());
+
+        //    mockedEngraverService.Setup(c => c.GetAll()).Returns(engraversCollection.AsQueryable());
+
+        //    mockedVinylCutterService.Setup(c => c.GetAll()).Returns(cuttersCollection.AsQueryable());
+
+
+        //    mockedUsersService.Setup(c => c.GetAll()).Returns
+        //        (userssCollection.AsQueryable());
+
+        //    //Assert
+        //    controller
+        //        .WithCallTo(c => c.Index("Printer", printer.Id).ExecuteResult(typeof(Json)));
+        //}
+
         [Test]
-        public void Index_ShouldReturnsTrue_WhenComputers_AreValid()
+        public void Printers_ShouldReturnsTrue_WhenViewResult_IsValid()
         {
             // Arrange
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Printer, PrinterViewModel>();
                 cfg.CreateMap<PrinterViewModel, Printer>();
+            });
 
-                cfg.CreateMap<ImpactPrinter, ImpactPrinterViewModel>();
-                cfg.CreateMap<ImpactPrinterViewModel, ImpactPrinter>();
+            var controller = new AdminController(mockedHttpContext.Object, mockedProvider.Object, mockedUsersService.Object,
+                mockedMapper.Object, mockedPrinterService.Object, mockedImpactPrinterService.Object, mockedEngraverService.Object, mockedVinylCutterService.Object);
 
+            var viewModel = new ProductViewModel();
+
+            // Act & Assert
+            controller.MakeAjaxRequest();
+            
+            controller.WithCallTo(c => c.Printers()).ShouldRenderPartialView("_Printers");
+        }
+
+        [Test]
+        public void Engravers_ShouldReturnsTrue_WhenViewResult_IsValid()
+        {
+            // Arrange
+            Mapper.Initialize(cfg =>
+            {
                 cfg.CreateMap<Engraver, EngraverViewModel>();
                 cfg.CreateMap<EngraverViewModel, Engraver>();
+            });
 
+            var controller = new AdminController(mockedHttpContext.Object, mockedProvider.Object, mockedUsersService.Object,
+                mockedMapper.Object, mockedPrinterService.Object, mockedImpactPrinterService.Object, mockedEngraverService.Object, mockedVinylCutterService.Object);
+
+            var viewModel = new ProductViewModel();
+
+            // Act & Assert
+            controller.MakeAjaxRequest();
+
+            controller.WithCallTo(c => c.Engravers()).ShouldRenderPartialView("_Engravers");
+        }
+
+        [Test]
+        public void Cutters_ShouldReturnsTrue_WhenViewResult_IsValid()
+        {
+            // Arrange
+            Mapper.Initialize(cfg =>
+            {
                 cfg.CreateMap<VinylCutter, VinylCutterViewModel>();
                 cfg.CreateMap<VinylCutterViewModel, VinylCutter>();
+            });
 
-                cfg.CreateMap<User, UserViewModel>();
-                cfg.CreateMap<UserViewModel, User>();
+            var controller = new AdminController(mockedHttpContext.Object, mockedProvider.Object, mockedUsersService.Object,
+                mockedMapper.Object, mockedPrinterService.Object, mockedImpactPrinterService.Object, mockedEngraverService.Object, mockedVinylCutterService.Object);
+
+            var viewModel = new ProductViewModel();
+
+            // Act & Assert
+            controller.MakeAjaxRequest();
+
+            controller.WithCallTo(c => c.Cutters()).ShouldRenderPartialView("_Cutters");
+        }
+
+        [Test]
+        public void AddPrinterGET_ShouldReturnsTrue_WhenViewResult_IsValid()
+        {
+            // Arrange
+            var controller = new AdminController();
+
+            // Act and Assert
+            controller
+                .WithCallTo(c => c.AddPrinter())
+                .ShouldRenderPartialView("_AddPrinter");
+        }
+
+        [Test]
+        public void AddEngraverGET_ShouldReturnsTrue_WhenViewResult_IsValid()
+        {
+            // Arrange
+            var controller = new AdminController();
+
+            // Act and Assert
+            controller
+                .WithCallTo(c => c.AddEngraver())
+                .ShouldRenderPartialView("_AddEngraver");
+        }
+
+        [Test]
+        public void AddCutterGET_ShouldReturnsTrue_WhenViewResult_IsValid()
+        {
+            // Arrange
+            var controller = new AdminController();
+
+            // Act and Assert
+            controller
+                .WithCallTo(c => c.AddCutter())
+                .ShouldRenderPartialView("_AddCutter");
+        }
+
+        [Test]
+        public void AddComputerPOST_ShouldReturnsTrue_WhenViewResult_IsValid()
+        {
+            // Arrange
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Printer, PrinterViewModel>();
+                cfg.CreateMap<PrinterViewModel, Printer>();
             });
 
             var controller = new AdminController(mockedHttpContext.Object, mockedProvider.Object, mockedUsersService.Object,
                 mockedMapper.Object, mockedPrinterService.Object, mockedImpactPrinterService.Object, mockedEngraverService.Object, mockedVinylCutterService.Object);
 
             // Act
-            var printer = new Printer();
-            var impactPrinter = new ImpactPrinter();
-            var engraver = new Engraver();
-            var cutter = new VinylCutter();
-            var user = new User();
+            var printer = new Printer
+            {
+                Id = Guid.NewGuid()
+            };
 
-            var printersCollection = new List<Printer>() { printer };
-            var impactPrintersCollection = new List<ImpactPrinter>() { impactPrinter };
-            var engraversCollection = new List<Engraver>() { engraver };
-            var cuttersCollection = new List<VinylCutter>() { cutter };
-            var userssCollection = new List<User>() { user };
-
-
-            mockedPrinterService.Setup(c => c.GetAll()).Returns(printersCollection.AsQueryable());
-
-            mockedImpactPrinterService.Setup(c => c.GetAll()).Returns(impactPrintersCollection.AsQueryable());
-
-            mockedEngraverService.Setup(c => c.GetAll()).Returns(engraversCollection.AsQueryable());
-
-            mockedVinylCutterService.Setup(c => c.GetAll()).Returns(cuttersCollection.AsQueryable());
-
-
-            mockedUsersService.Setup(c => c.GetAll()).Returns
-                (userssCollection.AsQueryable());
+            mockedPrinterService.Setup(c => c.Add(printer));
 
             //Assert
             controller
-                .WithCallTo(c => c.Index("Printer", printer.Id)
-                .ShouldReturnJson());
+                .WithCallTo(c => c.AddPrinter(printer))
+                .ShouldRenderPartialView("_Success");
+        }
+
+        [Test]
+        public void AddEngraverPOST_ShouldReturnsTrue_WhenViewResult_IsValid()
+        {
+            // Arrange
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Engraver, EngraverViewModel>();
+                cfg.CreateMap<EngraverViewModel, Engraver>();
+            });
+
+            var controller = new AdminController(mockedHttpContext.Object, mockedProvider.Object, mockedUsersService.Object,
+                mockedMapper.Object, mockedPrinterService.Object, mockedImpactPrinterService.Object, mockedEngraverService.Object, mockedVinylCutterService.Object);
+
+            // Act
+            var engraver = new Engraver()
+            {
+                Id = Guid.NewGuid()
+            };
+
+            mockedEngraverService.Setup(c => c.Add(engraver));
+
+            //Assert
+            controller
+                .WithCallTo(c => c.AddEngraver(engraver))
+                .ShouldRenderPartialView("_Success");
+        }
+
+        [Test]
+        public void AddCutterPOST_ShouldReturnsTrue_WhenViewResult_IsValid()
+        {
+            // Arrange
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<VinylCutter, VinylCutterViewModel>();
+                cfg.CreateMap<VinylCutterViewModel, VinylCutter>();
+            });
+
+            var controller = new AdminController(mockedHttpContext.Object, mockedProvider.Object, mockedUsersService.Object,
+                mockedMapper.Object, mockedPrinterService.Object, mockedImpactPrinterService.Object, mockedEngraverService.Object, mockedVinylCutterService.Object);
+
+            // Act
+            var vinylCutter = new VinylCutter()
+            {
+                Id = Guid.NewGuid()
+            };
+
+            mockedVinylCutterService.Setup(c => c.Add(vinylCutter));
+
+            //Assert
+            controller
+                .WithCallTo(c => c.AddCutter(vinylCutter))
+                .ShouldRenderPartialView("_Success");
         }
     }
 }

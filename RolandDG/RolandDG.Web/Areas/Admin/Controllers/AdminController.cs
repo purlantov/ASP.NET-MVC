@@ -178,7 +178,7 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddPrinter(Printer printer)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
             //var currentUser = this.usersService.GetAll()
             //    .Single(x => x.Id == userId);
 
@@ -246,7 +246,7 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddEngraver(Engraver engraver)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
             //var currentUser = this.usersService.GetAll()
             //    .Single(x => x.Id == userId);
 
@@ -316,12 +316,8 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddCutter(VinylCutter cutter)
         {
-            var userId = User.Identity.GetUserId();
-            //var currentUser = this.usersService.GetAll()
-            //    .Single(x => x.Id == userId);
-
             cutter.CreatedOn = DateTime.Now;
-            //printer.Seller = currentUser;
+
             this.vinylCuttersService.Add(cutter);
 
             return PartialView("_Success");
