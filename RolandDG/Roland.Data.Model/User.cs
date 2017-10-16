@@ -12,11 +12,8 @@ namespace Roland.Data.Model
 {
     public class User : IdentityUser, IAuditable, IDeletable
     {
-        public virtual ICollection<Product> Products { get; set; }
-
         public User()
         {
-            this.Products = new HashSet<Product>();
         }
 
         [Index]

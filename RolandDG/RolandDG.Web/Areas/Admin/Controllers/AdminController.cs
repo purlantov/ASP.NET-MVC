@@ -30,9 +30,8 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         private readonly IEngraversService engraversService;
         private readonly IVinylCuttersService vinylCuttersService;
 
-        public AdminController(ApplicationUserManager userManager)
+        public AdminController()
         {
-            this.UserManager = userManager;
         }
 
         public AdminController(IHttpContextProvider httpContext, IVerificationProvider verification,
@@ -47,6 +46,7 @@ namespace RolandDG.Web.Areas.Admin.Controllers
             Guard.WhenArgument(impactPrinterService, nameof(impactPrinterService)).IsNull().Throw();
             Guard.WhenArgument(engraversService, nameof(engraversService)).IsNull().Throw();
             Guard.WhenArgument(vinylCuttersService, nameof(vinylCuttersService)).IsNull().Throw();
+            Guard.WhenArgument(usersService, nameof(usersService)).IsNull().Throw();
 
             this.httpContext = httpContext;
             this.verification = verification;
@@ -178,7 +178,7 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddPrinter(Printer printer)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
             //var currentUser = this.usersService.GetAll()
             //    .Single(x => x.Id == userId);
 
@@ -246,7 +246,7 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddEngraver(Engraver engraver)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
             //var currentUser = this.usersService.GetAll()
             //    .Single(x => x.Id == userId);
 
@@ -316,12 +316,8 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddCutter(VinylCutter cutter)
         {
-            var userId = User.Identity.GetUserId();
-            //var currentUser = this.usersService.GetAll()
-            //    .Single(x => x.Id == userId);
-
             cutter.CreatedOn = DateTime.Now;
-            //printer.Seller = currentUser;
+
             this.vinylCuttersService.Add(cutter);
 
             return PartialView("_Success");
@@ -367,6 +363,31 @@ namespace RolandDG.Web.Areas.Admin.Controllers
             };
 
             return PartialView("_Cutters", viewModel);
+        }
+
+        // Delete Records \\
+        [HttpPost]
+        public ActionResult Index(string type, Guid id)
+        {
+            switch (type)
+            {
+                case "Printer":
+                    var printer = this.printersService.GetAll().Single(x => x.Id == id);
+                    this.printersService.Delete(printer); break;
+                case "ImpactPrinter":
+                    var impactPrinter = this.impactPrinterService.GetAll().Single(x => x.Id == id);
+                    this.impactPrinterService.Delete(impactPrinter); break;
+                case "Engraver":
+                    var engraver = this.engraversService.GetAll().Single(x => x.Id == id);
+                    this.engraversService.Delete(engraver); break;
+                case "Cutter":
+                    var cutter = this.vinylCuttersService.GetAll().Single(x => x.Id == id);
+                    this.vinylCuttersService.Delete(cutter); break;
+                case "User":
+                    var user = this.usersService.GetAll().Single(x => x.Id == id.ToString());
+                    this.usersService.Delete(user); break;
+            }
+            return Json(null);
         }
     }
 }

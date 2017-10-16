@@ -3,16 +3,20 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Bytes2you.Validation;
 using Microsoft.AspNet.Identity;
+using PagedList;
 using Roland.Data.Model;
 using RolandDG.Services;
 using RolandDG.Services.Contracts;
+using RolandDG.Web.Providers.Contracts;
 using RolandDG.Web.ViewModels.Product;
 
 namespace RolandDG.Web.Controllers
 {
     public class ProductController : Controller
     {
+        private readonly IVerificationProvider verification;
         private readonly IMapper mapper;
         private readonly IPrintersService printersService;
         private readonly IImpactPrintersService impactPrintersService;
@@ -21,8 +25,15 @@ namespace RolandDG.Web.Controllers
 
         public ProductController(IMapper mapper, IPrintersService printersService,
             IImpactPrintersService impactPrinterService, IEngraversService engraversService,
-            IVinylCuttersService vinylCuttersService)
+            IVinylCuttersService vinylCuttersService, IVerificationProvider verification)
         {
+            Guard.WhenArgument(verification, nameof(verification)).IsNull().Throw();
+            Guard.WhenArgument(mapper, nameof(mapper)).IsNull().Throw();
+            Guard.WhenArgument(printersService, nameof(printersService)).IsNull().Throw();
+            Guard.WhenArgument(impactPrinterService, nameof(impactPrinterService)).IsNull().Throw();
+            Guard.WhenArgument(engraversService, nameof(engraversService)).IsNull().Throw();
+            Guard.WhenArgument(vinylCuttersService, nameof(vinylCuttersService)).IsNull().Throw();
+
             this.mapper = mapper;
             this.printersService = printersService;
             this.impactPrintersService = impactPrinterService;
@@ -52,7 +63,7 @@ namespace RolandDG.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Printers()
+        public ActionResult Printers(int? page)
         {
             ViewData["Title"] = "Printers";
 
@@ -61,38 +72,45 @@ namespace RolandDG.Web.Controllers
                 .ProjectTo<PrinterViewModel>()
                 .ToList();
 
-            return View(printers);
+            var viewModel = new ProductViewModel()
+            {
+                PrintersCollection = printers
+            };
+
+            var pageNumber = page ?? 1;
+            var pageSize = 5;
+            return View(viewModel.PrintersCollection.ToPagedList(pageNumber, pageSize));
         }
+
+        //[HttpGet]
+        //[Authorize(Roles = "User, Admin")]
+        //[Route("add-printer")]
+        //public ActionResult AddPrinter()
+        //{
+        //    ViewData["Title"] = "Create Printer";
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //[Authorize(Roles = "User, Admin")]
+        //[ValidateAntiForgeryToken]
+        //[Route("add-printer")]
+        //public ActionResult AddPrinter(Printer printer)
+        //{
+        //    var userId = User.Identity.GetUserId();
+        //    //var currentUser = this.usersService.GetAll()
+        //    //    .Single(x => x.Id == userId);
+
+        //    printer.CreatedOn = DateTime.Now;
+        //    //printer.Seller = currentUser;
+        //    this.printersService.Add(printer);
+
+        //    return RedirectToAction("Printers", "Product");
+        //}
+
 
         [HttpGet]
-        [Authorize(Roles = "User, Admin")]
-        [Route("add-printer")]
-        public ActionResult AddPrinter()
-        {
-            ViewData["Title"] = "Create Printer";
-            return View();
-        }
-
-        [HttpPost]
-        [Authorize(Roles = "User, Admin")]
-        [ValidateAntiForgeryToken]
-        [Route("add-printer")]
-        public ActionResult AddPrinter(Printer printer)
-        {
-            var userId = User.Identity.GetUserId();
-            //var currentUser = this.usersService.GetAll()
-            //    .Single(x => x.Id == userId);
-
-            printer.CreatedOn = DateTime.Now;
-            //printer.Seller = currentUser;
-            this.printersService.Add(printer);
-
-            return RedirectToAction("Printers", "Product");
-        }
-
-
-        [HttpGet]
-        public ActionResult Engravers()
+        public ActionResult Engravers(int? page)
         {
             ViewData["Title"] = "Engravers";
 
@@ -101,7 +119,16 @@ namespace RolandDG.Web.Controllers
                 .ProjectTo<EngraverViewModel>()
                 .ToList();
 
-            return View(engravers);
+            var viewModel = new ProductViewModel()
+            {
+                EngraversCollection = engravers
+            };
+
+            var pageNumber = page ?? 1;
+            var pageSize = 5;
+            return View(viewModel.EngraversCollection.ToPagedList(pageNumber, pageSize));
+
+            //return View(engravers);
         }
 
         [HttpGet]
@@ -120,7 +147,7 @@ namespace RolandDG.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Cutters()
+        public ActionResult Cutters(int? page)
         {
             ViewData["Title"] = "Cutters";
 
@@ -129,7 +156,16 @@ namespace RolandDG.Web.Controllers
                 .ProjectTo<VinylCutterViewModel>()
                 .ToList();
 
-            return View(cutters);
+            var viewModel = new ProductViewModel()
+            {
+                VinylCuttersCollection = cutters
+            };
+
+            var pageNumber = page ?? 1;
+            var pageSize = 5;
+            return View(viewModel.VinylCuttersCollection.ToPagedList(pageNumber, pageSize));
+
+            //return View(cutters);
         }
 
         [HttpGet]
@@ -146,7 +182,7 @@ namespace RolandDG.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult ImpactPrinters()
+        public ActionResult ImpactPrinters(int? page)
         {
             ViewData["Title"] = "ImpactPrinters";
 
@@ -155,7 +191,15 @@ namespace RolandDG.Web.Controllers
                 .ProjectTo<ImpactPrinterViewModel>()
                 .ToList();
 
-            return View(impactPrinters);
+            var viewModel = new ProductViewModel()
+            {
+                ImpactPrintersCollection = impactPrinters
+            };
+
+            var pageNumber = page ?? 1;
+            var pageSize = 5;
+            return View(viewModel.ImpactPrintersCollection.ToPagedList(pageNumber, pageSize));
+            //return View(impactPrinters);
         }
 
         [HttpGet]

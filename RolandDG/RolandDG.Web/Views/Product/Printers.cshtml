@@ -1,4 +1,5 @@
-﻿@model ICollection<RolandDG.Web.ViewModels.Product.PrinterViewModel>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<RolandDG.Web.ViewModels.Product.PrinterViewModel>
 
 @{
     ViewBag.Title = "Printers";
@@ -24,5 +25,7 @@
     <hr/>
 }
 
-
+<div align="center">
+    @Html.PagedListPager(Model, page => Url.Action("Printers", new { page }))
+</div>
 

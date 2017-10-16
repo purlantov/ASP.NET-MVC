@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace RolandDG.Services.Contracts
 {
-    public interface IProdictsService
-    {
-        IQueryable<Product> GetAll();
-        void Add(Product product);
-        void Delete(Product product);
-        void Update(Product product);
-    }
+    //public interface IProdictsService
+    //{
+    //    IQueryable<Product> GetAll();
+    //    void Add(Product product);
+    //    void Delete(Product product);
+    //    void Update(Product product);
+    //}
 }
