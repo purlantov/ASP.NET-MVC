@@ -8,10 +8,6 @@
 |:--------------:|:-------------------------------------------:|:--------------------------------------------------------:|
 |Pavel Purlantov    |[_purlantov_](https://github.com/purlantov)  |[_purlantov_](http://telerikacademy.com/Users/purlantov)|
 
-
-Bitack PC store is an ASP.NET MVC application for selling computers, laptops and monitors and for connecting sellers with buyers. Visitors can see address registration of the shop and current advertisements. Registered users has profiles and can add, update and delete their ads. Administrators has separated section with many functions like adding, editing and deleting users and ads. Also they can make other users administrators and delete cache of the app.
-
-
 :blue_book: [**Project description**](./Project-description.md)
 
 :rocket: [**Website of the application**](http://purlantov-001-site1.gtempurl.com/)
