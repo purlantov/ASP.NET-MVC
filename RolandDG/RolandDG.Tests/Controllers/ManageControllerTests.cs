@@ -72,30 +72,30 @@ namespace RolandDG.Tests.Controllers
             var controller =
                 new ManageController(mockedProvider.Object, mockedMapper.Object, mockedUsersService.Object);
 
+            //Act
 
             mockedProvider.Setup(v => v.CurrentUserId).Returns(id);
-
-            // Act
-            controller.Index(null);
 
 
             //Assert
             controller
-                .WithCallTo(c => c.ChangePassword())
+                .WithCallTo(c => c.Index())
                 .ShouldRenderDefaultView();
         }
 
-        [Test]
-        public void ChangePasswordGET_ShouldReturnsTrue_WhenViewResult_IsValid()
-        {
-            //Arrange
-            var controller = new ManageController();
+        //[Test]
+        //public void ChangePasswordGET_ShouldReturnsTrue_WhenViewResult_IsValid()
+        //{
+        //    //Arrange
+        //    var controller = new ManageController();
+        //    var model = new ChangePasswordViewModel();
 
-            // Assert
-            controller
-                .WithCallTo(c => c.ChangePassword())
-                .ShouldRenderView("ChangePassword");
-        }
+
+        //    //Assert
+        //    controller
+        //        .WithCallTo(c => c.Index(model))
+        //        .ShouldRenderDefaultView();
+        //}
 
         [Test]
         public void ChangePasswordPOST_ShouldRenderView_WhenIsNotValid()
@@ -108,7 +108,7 @@ namespace RolandDG.Tests.Controllers
 
             // Act and Assert
             controller
-                .WithCallTo(c => c.ChangePassword(viewModel))
+                .WithCallTo(c => c.Index(viewModel))
                 .ShouldRenderDefaultView();
         }
 
@@ -136,7 +136,7 @@ namespace RolandDG.Tests.Controllers
             user.Object.Id = id;
             mockedVerification.Setup(x => x.ChangePassword(id, viewModel.OldPassword, viewModel.NewPassword)).Returns(IdentityResult.Success);
 
-            controller.ChangePassword(viewModel);
+            controller.Index(viewModel);
 
             mockedVerification.Verify(v => v.ChangePassword(id, viewModel.OldPassword, viewModel.NewPassword), Times.Once);
 
@@ -166,8 +166,8 @@ namespace RolandDG.Tests.Controllers
 
             // Act and Assert
             controller
-                .WithCallTo(c => c.ChangePassword(viewModel))
-                .ShouldRedirectTo(x => x.Index(null));
+                .WithCallTo(c => c.Index(viewModel))
+                .ShouldRenderPartialView("_Success");
         }
     }
 }

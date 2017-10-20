@@ -140,10 +140,12 @@
     <Compile Include="Controllers\ManageControllerTests.cs" />
     <Compile Include="Controllers\ProductControllerTests.cs" />
     <Compile Include="Data\EfRepositoryTests.cs" />
+    <Compile Include="Data\ModelsTests.cs" />
     <Compile Include="Data\MsSqlDbContextTests.cs" />
     <Compile Include="Data\UnitOfWorkTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Providers\FakeController.cs" />
     <Compile Include="Services\EngraversServiceTests.cs" />
     <Compile Include="Services\PrintersServiceTests.cs" />
     <Compile Include="Services\ImpactPrintersServiceTests.cs" />

@@ -8,8 +8,7 @@ namespace Roland.Data.Model
 {
     public enum UserType
     {
-        Admin,
-        User,
-        Guest
+        Admin = 1,
+        User = 0
     }
 }

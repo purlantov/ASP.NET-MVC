@@ -19,8 +19,6 @@ namespace RolandDG.Web.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private ApplicationUserManager _userManager;
-
         private readonly IUsersService usersService;
         private readonly IHttpContextProvider httpContext;
         private readonly IVerificationProvider verification;
@@ -58,12 +56,6 @@ namespace RolandDG.Web.Areas.Admin.Controllers
             this.vinylCuttersService = vinylCuttersService;
         }
 
-        public ApplicationUserManager UserManager
-        {
-            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
-            private set { _userManager = value; }
-        }
-
         [HttpGet]
         public ActionResult Index()
         {
@@ -92,16 +84,16 @@ namespace RolandDG.Web.Areas.Admin.Controllers
                     ModifiedOn = DateTime.Now
                 };
 
-                //var result = this.verification.Register(user, model.Password);
+
+                this.verification.Register(user, model.Password);
             }
-            return RedirectToAction("Index", "Admin");
+            return PartialView("_Success");
         }
 
         [HttpGet]
         public ActionResult Users()
         {
             ViewData["Title"] = "Users";
-
 
             var users = this.usersService
                 .GetAll()
@@ -123,6 +115,7 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult UpdateUser(string id)
         {
+            this.Request.IsAjaxRequest();
             ViewData["Title"] = "Update user profile";
 
             var user = this.usersService
@@ -130,32 +123,28 @@ namespace RolandDG.Web.Areas.Admin.Controllers
                 .ProjectTo<UserViewModel>()
                 .Single(x => x.Id == id);
 
-            return View(user);
+            return PartialView(user);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateUser(UserViewModel viewModel)
+        public ActionResult UpdateUser(User user)
         {
-            var role = viewModel.Role;
-            var user = this.mapper.Map<User>(viewModel);
+            this.Request.IsAjaxRequest();
 
             user.UserName = user.Email;
             user.CreatedOn = user.CreatedOn;
             user.PasswordHash = user.PasswordHash;
             user.SecurityStamp = user.SecurityStamp;
 
-
-            if (role == "User")
+            if (user.UserType == UserType.User)
             {
-                this.verification.AddToRole(user.Id, "User");
                 this.verification.RemoveFromRole(user.Id, "Admin");
             }
-            else if (role == "Admin")
+            else if (user.UserType == UserType.Admin)
             {
                 this.verification.AddToRole(user.Id, "Admin");
-                this.verification.RemoveFromRole(user.Id, "User");
             }
 
             this.usersService.Update(user);
@@ -181,6 +170,7 @@ namespace RolandDG.Web.Areas.Admin.Controllers
             //var userId = User.Identity.GetUserId();
             //var currentUser = this.usersService.GetAll()
             //    .Single(x => x.Id == userId);
+            ViewData["Title"] = "Add printer";
 
             printer.CreatedOn = DateTime.Now;
             //printer.Seller = currentUser;
@@ -214,6 +204,8 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult UpdatePrinter(Guid id)
         {
+            ViewData["Title"] = "Update printer";
+
             this.Request.IsAjaxRequest();
 
             var printer = this.printersService
@@ -240,6 +232,8 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult AddEngraver()
         {
+            ViewData["Title"] = "Add engraver";
+
             return PartialView("_AddEngraver");
         }
 
@@ -261,6 +255,8 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult UpdateEngraver(Guid id)
         {
+            ViewData["Title"] = "Update engraver";
+
             this.Request.IsAjaxRequest();
 
             var engraver = this.engraversService
@@ -283,6 +279,8 @@ namespace RolandDG.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Engravers()
         {
+            ViewData["Title"] = "Engravers";
+
             this.Request.IsAjaxRequest();
 
             var engravers = this.engraversService

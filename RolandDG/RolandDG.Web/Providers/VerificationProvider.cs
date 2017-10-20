@@ -45,12 +45,6 @@ namespace RolandDG.Web.Providers
         public IdentityResult Register(User user, string password)
         {
             var result = this.UserManager.Create(user, password);
-
-            if (result.Succeeded)
-            {
-                this.UserManager.AddToRole(user.Id, "User");
-            }
-
             return result;
         }
 
@@ -60,7 +54,6 @@ namespace RolandDG.Web.Providers
 
             if (result.Succeeded)
             {
-                this.UserManager.AddToRole(user.Id, "User");
                 this.SignInManager.SignIn(user, isPersistent, rememberBrowser);
             }
 

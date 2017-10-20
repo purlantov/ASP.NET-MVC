@@ -39,6 +39,7 @@ namespace RolandDG.Web.Controllers
             this.impactPrintersService = impactPrinterService;
             this.engraversService = engraversService;
             this.vinylCuttersService = vinylCuttersService;
+            this.verification = verification;
         }
 
         // GET: Product
@@ -63,6 +64,7 @@ namespace RolandDG.Web.Controllers
         }
 
         [HttpGet]
+        [OutputCache(CacheProfile = "ShortLived")]
         public ActionResult Printers(int? page)
         {
             ViewData["Title"] = "Printers";
@@ -110,6 +112,7 @@ namespace RolandDG.Web.Controllers
 
 
         [HttpGet]
+        //[OutputCache(CacheProfile = "ShortLived")]
         public ActionResult Engravers(int? page)
         {
             ViewData["Title"] = "Engravers";
@@ -147,6 +150,7 @@ namespace RolandDG.Web.Controllers
         }
 
         [HttpGet]
+        [OutputCache(CacheProfile = "ShortLived")]
         public ActionResult Cutters(int? page)
         {
             ViewData["Title"] = "Cutters";
@@ -182,6 +186,7 @@ namespace RolandDG.Web.Controllers
         }
 
         [HttpGet]
+        [OutputCache(CacheProfile = "ShortLived")]
         public ActionResult ImpactPrinters(int? page)
         {
             ViewData["Title"] = "ImpactPrinters";

@@ -200,79 +200,148 @@ namespace RolandDG.Tests.Controllers
         }
 
         [Test]
-        public void RegisterGET_ShouldRedirects_WhenRegistered()
+        public void LoginPOST_ShouldSetUserType_IfCurrentUserIsBlocked()
         {
             // Arrange
+            var returnUrl = "returnUrl";
             var mockedVerification = new Mock<IVerificationProvider>();
-            var controller = new AccountController(mockedVerification.Object);
 
-            // Act
-            mockedVerification.Setup(x => x.IsAuthenticated).Returns(true);
-
-            // Assert
-            controller
-                .WithCallTo(c => c.Register())
-                .ShouldRedirectTo((HomeController c) => c.Index());
-        }
-
-        [Test]
-        public void RegisterGET_ShouldReturnsTrue_WhenViewResult_IsValid()
-        {
-            // Arrange
-            var mockedVerification = new Mock<IVerificationProvider>();
-            var controller = new AccountController(mockedVerification.Object);
-
-            // Act
-            mockedVerification.Setup(x => x.IsAuthenticated).Returns(false);
-
-            // Assert
-            controller
-                .WithCallTo(c => c.Register())
-                .ShouldRenderView("Register");
-        }
-
-        [Test]
-        public void RegisterPOST_ShouldRedirects_WhenRegistered()
-        {
-            // Arrange
-            var mockedVerification = new Mock<IVerificationProvider>();
-            var controller = new AccountController(mockedVerification.Object);
-            var viewModel = new RegisterViewModel();
-
-            // Act
-            mockedVerification.Setup(x => x.IsAuthenticated).Returns(true);
-
-            // Assert
-            controller
-                .WithCallTo(c => c.Register(viewModel))
-                .ShouldRedirectTo((HomeController c) => c.Index());
-        }
-
-        [Test]
-        public void RegisterPOST_ShouldRegister_NewUser()
-        {
-            // Arrange
-            var mockedVerification = new Mock<IVerificationProvider>();
-            var mockedUser = new Mock<User>();
-
-            mockedVerification.Setup(v => v.RegisterAndLoginUser(It.IsAny<User>(), It.IsAny<string>(),
-                It.IsAny<bool>(), It.IsAny<bool>())).Returns(IdentityResult.Success);
-
-            var controller = new AccountController(mockedVerification.Object);
-
-            var viewModel = new RegisterViewModel()
+            var blockedUser = new User
             {
-                Password = "password",
-                Email = "pesho@abv.bg"
+                UserType = UserType.Admin,
+                Email = "pesho@abv.bg",
+                DeletedOn = DateTime.Now,
+                IsDeleted = true
+                
             };
 
-            controller.Register(viewModel);
+            var viewModel = new LoginViewModel()
+            {
+                Password = "password",
+                Email = "pesho@abv.bg",
+                RememberMe = true
+            };
+
+            mockedVerification.Setup(x => x.GetUserByEmail(blockedUser.Email)).Returns(blockedUser);
+
+
+            mockedVerification.Setup(v =>
+                    v.SignInWithPassword(viewModel.Email, viewModel.Password, viewModel.RememberMe, It.IsAny<bool>()))
+                .Returns(SignInStatus.Failure);
+
+            var controller = new AccountController(mockedVerification.Object);
+
 
             // Act and Assert
             controller
-                .WithCallTo(c => c.Register(viewModel))
-                .ShouldRedirectTo((HomeController c) => c.Index());
+                .WithCallTo(c => c.Login(viewModel, returnUrl))
+                .ShouldRenderDefaultView();
         }
+
+        [Test]
+        public void UserShouldGetValueOfUserType()
+        {
+            var user = new User
+            {
+                UserType = UserType.Admin,
+                Email = "pesho@abv.bg",
+                DeletedOn = DateTime.Now,
+                IsDeleted = true
+
+            };
+
+            Assert.That(user.UserType == UserType.Admin);
+        }
+
+        [Test]
+        public void UserShouldGetValueOfIsDeleted()
+        {
+            var user = new User
+            {
+                UserType = UserType.Admin,
+                Email = "pesho@abv.bg",
+                DeletedOn = DateTime.Now,
+                IsDeleted = true
+
+            };
+
+            Assert.That(user.IsDeleted == true);
+        }
+
+        //[Test]
+        //public void RegisterGET_ShouldRedirects_WhenRegistered()
+        //{
+        //    // Arrange
+        //    var mockedVerification = new Mock<IVerificationProvider>();
+        //    var controller = new AccountController(mockedVerification.Object);
+
+        //    // Act
+        //    mockedVerification.Setup(x => x.IsAuthenticated).Returns(true);
+
+        //    // Assert
+        //    controller
+        //        .WithCallTo(c => c.Register())
+        //        .ShouldRedirectTo((HomeController c) => c.Index());
+        //}
+
+        //[Test]
+        //public void RegisterGET_ShouldReturnsTrue_WhenViewResult_IsValid()
+        //{
+        //    // Arrange
+        //    var mockedVerification = new Mock<IVerificationProvider>();
+        //    var controller = new AccountController(mockedVerification.Object);
+
+        //    // Act
+        //    mockedVerification.Setup(x => x.IsAuthenticated).Returns(false);
+
+        //    // Assert
+        //    controller
+        //        .WithCallTo(c => c.Register())
+        //        .ShouldRenderView("Register");
+        //}
+
+        //[Test]
+        //public void RegisterPOST_ShouldRedirects_WhenRegistered()
+        //{
+        //    // Arrange
+        //    var mockedVerification = new Mock<IVerificationProvider>();
+        //    var controller = new AccountController(mockedVerification.Object);
+        //    var viewModel = new RegisterViewModel();
+
+        //    // Act
+        //    mockedVerification.Setup(x => x.IsAuthenticated).Returns(true);
+
+        //    // Assert
+        //    controller
+        //        .WithCallTo(c => c.Register(viewModel))
+        //        .ShouldRedirectTo((HomeController c) => c.Index());
+        //}
+
+        //[Test]
+        //public void RegisterPOST_ShouldRegister_NewUser()
+        //{
+        //    // Arrange
+        //    var mockedVerification = new Mock<IVerificationProvider>();
+        //    var mockedUser = new Mock<User>();
+
+        //    mockedVerification.Setup(v => v.RegisterAndLoginUser(It.IsAny<User>(), It.IsAny<string>(),
+        //        It.IsAny<bool>(), It.IsAny<bool>())).Returns(IdentityResult.Success);
+
+        //    var controller = new AccountController(mockedVerification.Object);
+
+        //    var viewModel = new RegisterViewModel()
+        //    {
+        //        Password = "password",
+        //        Email = "pesho@abv.bg"
+        //    };
+
+        //    controller.Register(viewModel);
+
+        //    // Act and Assert
+        //    controller
+        //        .WithCallTo(c => c.Register(viewModel))
+        //        .ShouldRedirectTo((HomeController c) => c.Index());
+        //}
 
         [Test]
         public void LogOff_ShouldRedirects_WhenSuccessfulLogOff()

@@ -19,10 +19,10 @@ namespace RolandDG.Web.ViewModels.Manage
         public string UserName { get; set; }
 
         [Required]
-        public string Role { get; set; }
+        public string SecurityStamp { get; set; }
 
         [Required]
-        public string SecurityStamp { get; set; }
+        public UserType UserType { get; set; }
 
         [Required]
         public string PasswordHash { get; set; }

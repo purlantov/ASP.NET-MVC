@@ -1,49 +1,39 @@
 ﻿@model ICollection<RolandDG.Web.ViewModels.Manage.UserViewModel>
-
 <h3 class="centerText">
     <span>All users</span>
     <button id="refreshButton" class='btn btn-default pull-right'>Refresh</button>
 </h3>
-
 <hr />
-
 <div class="table-responsive">
     <table id="usersTable" class="table table-hover">
         <thead>
             <tr>
+                <th>User</th>
                 <th>Type</th>
-                <th>Email</th>
                 <th>Modified On</th>
                 <th>Created On</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
-
         <tbody>
             @foreach (var user in Model)
             {
-                string type = user.GetType().Name
-                    .Split(new string[] { "ViewModel" },
-                    StringSplitOptions.RemoveEmptyEntries)[0];
-
                 <tr>
-                    <td>@user.Role</td>
                     <td>@user.Email</td>
-                    <td>@Html.DisplayFor(x => user.ModifiedOn)</td>
-                    <td>@Html.DisplayFor(x => user.CreatedOn)</td>
-
+                    <td>@user.UserType</td>
+                    <td>@user.ModifiedOn</td>
+                    <td>@user.CreatedOn</td>
                     <td>
-                        <a class="btn btn-primary" target="_blank"
-                           href="@Url.Action(string.Format("Update{0}/{1}", type,user.Id), "Admin", new { id = user.Id }, null)">
+                        
+                           @Ajax.ActionLink("Edit", "UpdateUser", "Admin", new {id = user.Id}, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "admin-container"})
                             <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
+                       
                     </td>
-
 
                     <td>
                         @Ajax.ActionLink("X", "Index", "Admin",
-                                        new { type = type, id = user.Id },
+                                        new { type = "User", id = user.Id },
                                         new AjaxOptions { HttpMethod = "POST" },
                                         new { @class = "btn btn-danger" })
                 </tr>
@@ -51,7 +41,6 @@
         </tbody>
     </table>
 </div>
-
 <script>
     $(document).ready(function () {
         $('#content').DataTable();

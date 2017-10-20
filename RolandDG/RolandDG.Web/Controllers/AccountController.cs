@@ -84,52 +84,52 @@ namespace RolandDG.Web.Controllers
         }
 
         //
-        // GET: /Account/Register
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            if (this.verification.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+        //// GET: /Account/Register
+        //[AllowAnonymous]
+        //public ActionResult Register()
+        //{
+        //    if (this.verification.IsAuthenticated)
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
 
-            ViewData["Title"] = "Register";
-            return View();
-        }
+        //    ViewData["Title"] = "Register";
+        //    return View();
+        //}
 
-        //
-        // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel model)
-        {
-            if (this.verification.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+        ////
+        //// POST: /Account/Register
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Register(RegisterViewModel model)
+        //{
+        //    if (this.verification.IsAuthenticated)
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
 
-            if (this.ModelState.IsValid)
-            {
-                var user = new User
-                {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    CreatedOn = DateTime.Now,
-                    ModifiedOn = DateTime.Now
-                };
+        //    if (this.ModelState.IsValid)
+        //    {
+        //        var user = new User
+        //        {
+        //            UserName = model.Email,
+        //            Email = model.Email,
+        //            CreatedOn = DateTime.Now,
+        //            ModifiedOn = DateTime.Now
+        //        };
 
-                var result = this.verification.RegisterAndLoginUser(user, model.Password, isPersistent: false, rememberBrowser: false);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+        //        var result = this.verification.RegisterAndLoginUser(user, model.Password, isPersistent: false, rememberBrowser: false);
+        //        if (result.Succeeded)
+        //        {
+        //            return RedirectToAction("Index", "Home");
+        //        }
 
-                AddErrors(result);
-            }
+        //        AddErrors(result);
+        //    }
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
 
         //

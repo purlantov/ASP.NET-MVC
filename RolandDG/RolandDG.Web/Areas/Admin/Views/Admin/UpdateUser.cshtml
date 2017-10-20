@@ -1,9 +1,9 @@
-﻿@model UserViewModel
+﻿@model RolandDG.Web.ViewModels.Manage.UserViewModel
 
 <h3 align="center">@ViewData["Title"]</h3>
 
 <div class="container">
-    @using (Html.BeginForm("UpdateUser", "AdminPanel", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("UpdateUser", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
         <h4>Update current user profile</h4>
@@ -21,9 +21,9 @@
             @{
                 var roleName = new List<string>() { "User", "Admin" };
             }
-            @Html.LabelFor(x => x.Role, "Role", new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(x => x.UserType, "Role", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownListFor(x => x.Role, new SelectList(roleName), new { @class = "form-control" })
+                @Html.DropDownListFor(x => x.UserType, new SelectList(roleName), new { @class = "form-control" })
             </div>
         </div>
 

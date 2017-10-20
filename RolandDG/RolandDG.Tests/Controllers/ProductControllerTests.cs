@@ -310,6 +310,44 @@ namespace RolandDG.Tests.Controllers
         }
 
         [Test]
+        public void Index_ShouldReturnsTrue_WhenViewResult_IsValid()
+        {
+            // Arrange
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Engraver, EngraverViewModel>();
+                cfg.CreateMap<EngraverViewModel, Engraver>();
+            });
+
+            var mockedProvider = new Mock<IVerificationProvider>();
+            var mockedMapper = new Mock<IMapper>();
+            var mockedUsersService = new Mock<IUsersService>();
+            var mockedPrintersService = new Mock<IPrintersService>();
+            var mockedVinylCuttersService = new Mock<IVinylCuttersService>();
+            var mockedEngraversService = new Mock<IEngraversService>();
+            var mockedImpacktPrintersService = new Mock<IImpactPrintersService>();
+
+            var controller = new ProductController(mockedMapper.Object, mockedPrintersService.Object,
+                mockedImpacktPrintersService.Object, mockedEngraversService.Object,
+                mockedVinylCuttersService.Object, mockedProvider.Object);
+
+            // Act
+            var engraver = new Engraver
+            {
+                Id = Guid.NewGuid()
+            };
+            var engraversCollection = new List<Engraver>() { engraver };
+
+            mockedEngraversService.Setup(c => c.GetAll()).Returns(engraversCollection.AsQueryable());
+
+
+            //Assert
+            controller
+                .WithCallTo(c => c.Index())
+                .ShouldRenderView("Index");
+        }
+
+        [Test]
         public void Engraver_ShouldReturnsTrue_WhenViewResult_IsValid()
         {
             // Arrange

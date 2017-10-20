@@ -1,4 +1,5 @@
-﻿@using Roland.Data.Model
+﻿@using System.Collections
+@using Roland.Data.Model
 @model RolandDG.Web.ViewModels.Product.PrinterViewModel   
 @Scripts.Render("~/bundles/jqueryval")
  
@@ -16,17 +17,12 @@
     </div>
  
     <div class="form-group">
-        @{
-            var inkType = new List<string>()
-                 {
-                     "EcoSolvent",
-                     "Pigment",
-                     "UV",
-                     "Sublimation"
-                 };
-        }
         @Html.LabelFor(m => m.Ink)
-        @Html.DropDownListFor(m => m.ProductType, new SelectList(inkType), " ", new { @class = "form-control" })
+        @*@Html.DropDownListFor(m => m.ProductType, new SelectList(inkType), " ", new { @class = "form-control" })*@
+        @Html.DropDownList("Ink Type", 
+            EnumHelper.GetSelectList(typeof(InkType)) , 
+            "Select My Type", 
+            new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Ink, "", new { @class = "text-danger" })
     </div>
         <div class="form-group">

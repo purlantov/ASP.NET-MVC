@@ -4,21 +4,24 @@ namespace RolandDG.Web.Controllers
 {
     public class HomeController : Controller
     {
+        [OutputCache(CacheProfile = "LongLived")]
         public ActionResult Index()
         {
             return View();
         }
 
+        [OutputCache(CacheProfile = "LongLived")]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Application inspired by Roland Digital Group";
 
             return View();
         }
 
+        [OutputCache(CacheProfile = "LongLived")]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "You want to contact me! Uaou!";
 
             return View();
         }
