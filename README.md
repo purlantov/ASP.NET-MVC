@@ -2,8 +2,6 @@
 
 ## Roland DG
 
-[![Build status](https://ci.appveyor.com/api/projects/status/9061ep1cnfdpckrw/branch/master?svg=true)](https://ci.appveyor.com/project/niksmanov/pc-store/branch/master)
-
 |Developed by    |GitHub Аccount                               |Telerik Academy Аccount                                   |
 |:--------------:|:-------------------------------------------:|:--------------------------------------------------------:|
 |Pavel Purlantov    |[_purlantov_](https://github.com/purlantov)  |[_purlantov_](http://telerikacademy.com/Users/purlantov)|
